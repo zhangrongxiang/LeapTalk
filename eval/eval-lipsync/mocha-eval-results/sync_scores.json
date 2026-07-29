@@ -1,0 +1,2877 @@
+[
+  {
+    "idx": 1,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\1_man_guitar.mp4",
+    "audio": "1p_closeup_facingcamera\\1_man_guitar_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.421421051025391,
+    "min_dist": 9.274812698364258,
+    "has_face": true,
+    "runtime_s": 4.93
+  },
+  {
+    "idx": 2,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\2_girl_drawing.mp4",
+    "audio": "1p_closeup_facingcamera\\2_girl_drawing_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.417168140411377,
+    "min_dist": 7.933621883392334,
+    "has_face": true,
+    "runtime_s": 4.23
+  },
+  {
+    "idx": 3,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\3_woman_tokyo.mp4",
+    "audio": "1p_closeup_facingcamera\\3_woman_tokyo_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.16034460067749,
+    "min_dist": 7.463681697845459,
+    "has_face": true,
+    "runtime_s": 4.49
+  },
+  {
+    "idx": 4,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\4_man_reading.mp4",
+    "audio": "1p_closeup_facingcamera\\4_man_reading_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.069026470184326,
+    "min_dist": 7.5032830238342285,
+    "has_face": true,
+    "runtime_s": 3.42
+  },
+  {
+    "idx": 5,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\5_man_pairs.mp4",
+    "audio": "1p_closeup_facingcamera\\5_man_pairs_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.966982841491699,
+    "min_dist": 8.500995635986328,
+    "has_face": true,
+    "runtime_s": 4.0
+  },
+  {
+    "idx": 6,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\6_woman_cat.mp4",
+    "audio": "1p_closeup_facingcamera\\6_woman_cat_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.040384292602539,
+    "min_dist": 8.211227416992188,
+    "has_face": true,
+    "runtime_s": 5.31
+  },
+  {
+    "idx": 7,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\7_woman_sing.mp4",
+    "audio": "1p_closeup_facingcamera\\7_woman_sing_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 7.342423439025879,
+    "min_dist": 7.659730911254883,
+    "has_face": true,
+    "runtime_s": 4.23
+  },
+  {
+    "idx": 8,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\8_woman_spacesuit_dessert.mp4",
+    "audio": "1p_closeup_facingcamera\\8_woman_spacesuit_dessert_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.250556945800781,
+    "min_dist": 9.601933479309082,
+    "has_face": true,
+    "runtime_s": 4.47
+  },
+  {
+    "idx": 9,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\9_man_jail.mp4",
+    "audio": "1p_closeup_facingcamera\\9_man_jail_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.342039585113525,
+    "min_dist": 7.313854694366455,
+    "has_face": true,
+    "runtime_s": 4.64
+  },
+  {
+    "idx": 10,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\10_woman_doctor.mp4",
+    "audio": "1p_closeup_facingcamera\\10_woman_doctor_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.575839042663574,
+    "min_dist": 8.982714653015137,
+    "has_face": true,
+    "runtime_s": 6.2
+  },
+  {
+    "idx": 11,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\11_man_on_hospital_bed.mp4",
+    "audio": "1p_closeup_facingcamera\\11_man_on_hospital_bed_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 7.624418258666992,
+    "min_dist": 7.009875297546387,
+    "has_face": true,
+    "runtime_s": 7.84
+  },
+  {
+    "idx": 12,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\12_man_business_suit_cigar.mp4",
+    "audio": "1p_closeup_facingcamera\\12_man_business_suit_cigar_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.919280052185059,
+    "min_dist": 6.469316482543945,
+    "has_face": true,
+    "runtime_s": 3.49
+  },
+  {
+    "idx": 13,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\13_man_cowboy_hold_gun.mp4",
+    "audio": "1p_closeup_facingcamera\\13_man_cowboy_hold_gun_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.972012519836426,
+    "min_dist": 8.437299728393555,
+    "has_face": true,
+    "runtime_s": 3.94
+  },
+  {
+    "idx": 14,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\14_man_noddle.mp4",
+    "audio": "1p_closeup_facingcamera\\14_man_noddle_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.746711730957031,
+    "min_dist": 8.919770240783691,
+    "has_face": true,
+    "runtime_s": 5.81
+  },
+  {
+    "idx": 15,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\15_woman_driving.mp4",
+    "audio": "1p_closeup_facingcamera\\15_woman_driving_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.400018692016602,
+    "min_dist": 7.830440521240234,
+    "has_face": true,
+    "runtime_s": 3.56
+  },
+  {
+    "idx": 16,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\16_man_bag_of_gold.mp4",
+    "audio": "1p_closeup_facingcamera\\16_man_bag_of_gold_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.008559226989746,
+    "min_dist": 6.857051849365234,
+    "has_face": true,
+    "runtime_s": 4.36
+  },
+  {
+    "idx": 17,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\17_woman_rose.mp4",
+    "audio": "1p_closeup_facingcamera\\17_woman_rose_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.211319923400879,
+    "min_dist": 8.696427345275879,
+    "has_face": true,
+    "runtime_s": 3.5
+  },
+  {
+    "idx": 18,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\18_woman_airplane_phone.mp4",
+    "audio": "1p_closeup_facingcamera\\18_woman_airplane_phone_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.737332344055176,
+    "min_dist": 6.912848472595215,
+    "has_face": true,
+    "runtime_s": 3.52
+  },
+  {
+    "idx": 19,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\19_man_basketball.mp4",
+    "audio": "1p_closeup_facingcamera\\19_man_basketball_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 4.450899600982666,
+    "min_dist": 6.6159539222717285,
+    "has_face": true,
+    "runtime_s": 3.15
+  },
+  {
+    "idx": 20,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\20_body_red_shirt.mp4",
+    "audio": "1p_closeup_facingcamera\\20_body_red_shirt_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.767602920532227,
+    "min_dist": 9.554787635803223,
+    "has_face": true,
+    "runtime_s": 4.41
+  },
+  {
+    "idx": 21,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\21_body_3d_red_shirt.mp4",
+    "audio": "1p_closeup_facingcamera\\21_body_3d_red_shirt_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.93431282043457,
+    "min_dist": 9.095369338989258,
+    "has_face": true,
+    "runtime_s": 4.22
+  },
+  {
+    "idx": 22,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\22_girl_hold_a_teddy_bear.mp4",
+    "audio": "1p_closeup_facingcamera\\22_girl_hold_a_teddy_bear_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.076332092285156,
+    "min_dist": 6.568761825561523,
+    "has_face": true,
+    "runtime_s": 3.64
+  },
+  {
+    "idx": 23,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\23_man_facingcamera_superman.mp4",
+    "audio": "1p_closeup_facingcamera\\23_man_facingcamera_superman_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.877097129821777,
+    "min_dist": 6.820335388183594,
+    "has_face": true,
+    "runtime_s": 4.16
+  },
+  {
+    "idx": 24,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\24_man_facing_left_car_agent.mp4",
+    "audio": "1p_closeup_facingcamera\\24_man_facing_left_car_agent_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.189981460571289,
+    "min_dist": 8.151676177978516,
+    "has_face": true,
+    "runtime_s": 3.92
+  },
+  {
+    "idx": 25,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\25_man_facing_right_x_rays.mp4",
+    "audio": "1p_closeup_facingcamera\\25_man_facing_right_x_rays_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.290631294250488,
+    "min_dist": 9.258064270019531,
+    "has_face": true,
+    "runtime_s": 3.87
+  },
+  {
+    "idx": 26,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\26_man_butcher_facing_camera.mp4",
+    "audio": "1p_closeup_facingcamera\\26_man_butcher_facing_camera_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.388453006744385,
+    "min_dist": 7.8793721199035645,
+    "has_face": true,
+    "runtime_s": 3.84
+  },
+  {
+    "idx": 27,
+    "category": "1p_closeup_facingcamera",
+    "video": "1p_closeup_facingcamera\\27_man_skyline_facing_camera.mp4",
+    "audio": "1p_closeup_facingcamera\\27_man_skyline_facing_camera_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 7.860925197601318,
+    "min_dist": 7.336228847503662,
+    "has_face": true,
+    "runtime_s": 3.93
+  },
+  {
+    "idx": 1,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\1_man_bag_of_gold.mp4",
+    "audio": "1p_camera_movement\\1_man_bag_of_gold_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 3.504810333251953,
+    "min_dist": 8.820384979248047,
+    "has_face": true,
+    "runtime_s": 3.64
+  },
+  {
+    "idx": 2,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\2_woman_street_walk_low_angle.mp4",
+    "audio": "1p_camera_movement\\2_woman_street_walk_low_angle_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 4.9912261962890625,
+    "min_dist": 9.107931137084961,
+    "has_face": true,
+    "runtime_s": 3.95
+  },
+  {
+    "idx": 3,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\3_man_street_walk.mp4",
+    "audio": "1p_camera_movement\\3_man_street_walk_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 9.565067291259766,
+    "min_dist": 6.628697872161865,
+    "has_face": true,
+    "runtime_s": 4.81
+  },
+  {
+    "idx": 4,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\4_man_skateboarding.mp4",
+    "audio": "1p_camera_movement\\4_man_skateboarding_speech.wav",
+    "offsets": [],
+    "best_conf": 0.0,
+    "min_dist": 0.0,
+    "has_face": false,
+    "runtime_s": 2.7
+  },
+  {
+    "idx": 5,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\5_woman_grassy_lawn_tucks_hair.mp4",
+    "audio": "1p_camera_movement\\5_woman_grassy_lawn_tucks_hair_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 4.592559814453125,
+    "min_dist": 8.41486930847168,
+    "has_face": true,
+    "runtime_s": 4.12
+  },
+  {
+    "idx": 6,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\6_man_strikes_a_wooden_board.mp4",
+    "audio": "1p_camera_movement\\6_man_strikes_a_wooden_board_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.199925422668457,
+    "min_dist": 7.029629707336426,
+    "has_face": true,
+    "runtime_s": 3.71
+  },
+  {
+    "idx": 7,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\7_woman_warrior_rush.mp4",
+    "audio": "1p_camera_movement\\7_woman_warrior_rush_speech.wav",
+    "offsets": [
+      0,
+      0
+    ],
+    "best_conf": 7.372167110443115,
+    "min_dist": 6.952372074127197,
+    "has_face": true,
+    "runtime_s": 4.73
+  },
+  {
+    "idx": 8,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\8_woman_camera_trackingshot_young_woman_city_walk_hodling_coffee.mp4",
+    "audio": "1p_camera_movement\\8_woman_camera_trackingshot_young_woman_city_walk_hodling_coffee_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 9.376470565795898,
+    "min_dist": 7.0118865966796875,
+    "has_face": true,
+    "runtime_s": 3.71
+  },
+  {
+    "idx": 9,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\9_woman_driving_handheld.mp4",
+    "audio": "1p_camera_movement\\9_woman_driving_handheld_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 3.2424230575561523,
+    "min_dist": 10.072896003723145,
+    "has_face": true,
+    "runtime_s": 3.88
+  },
+  {
+    "idx": 10,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\10_man_basketball_camera_push_in.mp4",
+    "audio": "1p_camera_movement\\10_man_basketball_camera_push_in_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 1.3950414657592773,
+    "min_dist": 9.68071174621582,
+    "has_face": true,
+    "runtime_s": 4.5
+  },
+  {
+    "idx": 11,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\11_woman_purple_car_dolly_zoom.mp4",
+    "audio": "1p_camera_movement\\11_woman_purple_car_dolly_zoom_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.569689750671387,
+    "min_dist": 8.681221008300781,
+    "has_face": true,
+    "runtime_s": 4.29
+  },
+  {
+    "idx": 12,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\12_man_street_walk_medium_wide_tracking.mp4",
+    "audio": "1p_camera_movement\\12_man_street_walk_medium_wide_tracking_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 3.860015869140625,
+    "min_dist": 9.836922645568848,
+    "has_face": true,
+    "runtime_s": 4.18
+  },
+  {
+    "idx": 13,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\13_woman_walking_through_cave_handheld.mp4",
+    "audio": "1p_camera_movement\\13_woman_walking_through_cave_handheld_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.741951942443848,
+    "min_dist": 9.152654647827148,
+    "has_face": true,
+    "runtime_s": 3.73
+  },
+  {
+    "idx": 14,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\14_woman_swimming_dolly_in.mp4",
+    "audio": "1p_camera_movement\\14_woman_swimming_dolly_in_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 2.875774383544922,
+    "min_dist": 9.89192008972168,
+    "has_face": true,
+    "runtime_s": 3.77
+  },
+  {
+    "idx": 15,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\15_woman_swimming_dolly_in_2.mp4",
+    "audio": "1p_camera_movement\\15_woman_swimming_dolly_in_2_speech.wav",
+    "offsets": [
+      13
+    ],
+    "best_conf": 1.6326818466186523,
+    "min_dist": 10.420031547546387,
+    "has_face": true,
+    "runtime_s": 4.3
+  },
+  {
+    "idx": 16,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\16_man_tortoise_dolly_in.mp4",
+    "audio": "1p_camera_movement\\16_man_tortoise_dolly_in_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.966055393218994,
+    "min_dist": 7.905975818634033,
+    "has_face": true,
+    "runtime_s": 4.37
+  },
+  {
+    "idx": 17,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\17_man_basketball_camera_tracking.mp4",
+    "audio": "1p_camera_movement\\17_man_basketball_camera_tracking_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.077862739562988,
+    "min_dist": 7.954717636108398,
+    "has_face": true,
+    "runtime_s": 3.81
+  },
+  {
+    "idx": 18,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\18_man_tie_blue_suit_camera_tracking.mp4",
+    "audio": "1p_camera_movement\\18_man_tie_blue_suit_camera_tracking_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.32101058959961,
+    "min_dist": 7.513079643249512,
+    "has_face": true,
+    "runtime_s": 3.54
+  },
+  {
+    "idx": 19,
+    "category": "1p_camera_movement",
+    "video": "1p_camera_movement\\19_man_on_edge_rooftop_pan_right.mp4",
+    "audio": "1p_camera_movement\\19_man_on_edge_rooftop_pan_right_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.496537208557129,
+    "min_dist": 7.112063407897949,
+    "has_face": true,
+    "runtime_s": 4.57
+  },
+  {
+    "idx": 1,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\1_facingcamera_man_guitar_cry.mp4",
+    "audio": "1p_emotion\\1_facingcamera_man_guitar_cry_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.172872066497803,
+    "min_dist": 7.836248874664307,
+    "has_face": true,
+    "runtime_s": 3.81
+  },
+  {
+    "idx": 2,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\2_facingcamera_man_guitar_happy.mp4",
+    "audio": "1p_emotion\\2_facingcamera_man_guitar_happy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.8447265625,
+    "min_dist": 8.53759765625,
+    "has_face": true,
+    "runtime_s": 4.4
+  },
+  {
+    "idx": 3,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\3_facingcamera_girl_drawing_angry.mp4",
+    "audio": "1p_emotion\\3_facingcamera_girl_drawing_angry_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.083345413208008,
+    "min_dist": 9.074396133422852,
+    "has_face": true,
+    "runtime_s": 4.19
+  },
+  {
+    "idx": 4,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\4_facingcamera_woman_tokyo_happy.mp4",
+    "audio": "1p_emotion\\4_facingcamera_woman_tokyo_happy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 3.6877870559692383,
+    "min_dist": 9.53414535522461,
+    "has_face": true,
+    "runtime_s": 5.42
+  },
+  {
+    "idx": 5,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\5_facingcamera_woman_tokyo_sad.mp4",
+    "audio": "1p_emotion\\5_facingcamera_woman_tokyo_sad_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.688614845275879,
+    "min_dist": 8.345624923706055,
+    "has_face": true,
+    "runtime_s": 4.12
+  },
+  {
+    "idx": 6,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\6_facingbook_young_man_reading_worried.mp4",
+    "audio": "1p_emotion\\6_facingbook_young_man_reading_worried_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 8.831707000732422,
+    "min_dist": 7.1336493492126465,
+    "has_face": true,
+    "runtime_s": 4.37
+  },
+  {
+    "idx": 7,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\7_facingbook_young_man_reading_happy.mp4",
+    "audio": "1p_emotion\\7_facingbook_young_man_reading_happy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.416385650634766,
+    "min_dist": 7.419388294219971,
+    "has_face": true,
+    "runtime_s": 4.88
+  },
+  {
+    "idx": 8,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\8_facingcamera_old_man_sailor_concerned.mp4",
+    "audio": "1p_emotion\\8_facingcamera_old_man_sailor_concerned_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 3.330399513244629,
+    "min_dist": 7.417096138000488,
+    "has_face": true,
+    "runtime_s": 4.03
+  },
+  {
+    "idx": 9,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\9_facingcamera_old_man_paris_happy.mp4",
+    "audio": "1p_emotion\\9_facingcamera_old_man_paris_happy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.922840118408203,
+    "min_dist": 8.962019920349121,
+    "has_face": true,
+    "runtime_s": 4.95
+  },
+  {
+    "idx": 10,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\10_facingcamera_old_man_paris_serious.mp4",
+    "audio": "1p_emotion\\10_facingcamera_old_man_paris_serious_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.98382568359375,
+    "min_dist": 8.256794929504395,
+    "has_face": true,
+    "runtime_s": 5.45
+  },
+  {
+    "idx": 11,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\11_facingcamera_woman_cat_angry.mp4",
+    "audio": "1p_emotion\\11_facingcamera_woman_cat_angry_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.993310451507568,
+    "min_dist": 7.6842570304870605,
+    "has_face": true,
+    "runtime_s": 4.81
+  },
+  {
+    "idx": 12,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\12_facingcamera_woman_cat_happy.mp4",
+    "audio": "1p_emotion\\12_facingcamera_woman_cat_happy_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.459920883178711,
+    "min_dist": 8.633816719055176,
+    "has_face": true,
+    "runtime_s": 4.62
+  },
+  {
+    "idx": 13,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\13_facingcamera_woman_cat_cry.mp4",
+    "audio": "1p_emotion\\13_facingcamera_woman_cat_cry_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.764432907104492,
+    "min_dist": 7.9550065994262695,
+    "has_face": true,
+    "runtime_s": 4.19
+  },
+  {
+    "idx": 14,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\14_facingcamera_woman_cat_worried.mp4",
+    "audio": "1p_emotion\\14_facingcamera_woman_cat_worried_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.330166339874268,
+    "min_dist": 7.407495975494385,
+    "has_face": true,
+    "runtime_s": 4.56
+  },
+  {
+    "idx": 15,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\15_facingcamera_woman_cat_cry_rainy.mp4",
+    "audio": "1p_emotion\\15_facingcamera_woman_cat_cry_rainy_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 4.284664154052734,
+    "min_dist": 10.330233573913574,
+    "has_face": true,
+    "runtime_s": 4.09
+  },
+  {
+    "idx": 16,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\16_facingcamera_woman_cat_cry_snowy.mp4",
+    "audio": "1p_emotion\\16_facingcamera_woman_cat_cry_snowy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.068521499633789,
+    "min_dist": 8.274751663208008,
+    "has_face": true,
+    "runtime_s": 4.72
+  },
+  {
+    "idx": 17,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\17_facing_left_woman_sing_worried.mp4",
+    "audio": "1p_emotion\\17_facing_left_woman_sing_worried_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.248954772949219,
+    "min_dist": 7.420048713684082,
+    "has_face": true,
+    "runtime_s": 3.53
+  },
+  {
+    "idx": 18,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\18_facing_left_woman_sing_cry.mp4",
+    "audio": "1p_emotion\\18_facing_left_woman_sing_cry_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.326094627380371,
+    "min_dist": 7.542018890380859,
+    "has_face": true,
+    "runtime_s": 3.32
+  },
+  {
+    "idx": 19,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\19_facing_right_man_on_hospital_bed_scared.mp4",
+    "audio": "1p_emotion\\19_facing_right_man_on_hospital_bed_scared_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.979776382446289,
+    "min_dist": 8.206230163574219,
+    "has_face": true,
+    "runtime_s": 4.5
+  },
+  {
+    "idx": 20,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\20_facing_right_man_on_hospital_bed_hysteria.mp4",
+    "audio": "1p_emotion\\20_facing_right_man_on_hospital_bed_hysteria_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.559221267700195,
+    "min_dist": 8.793981552124023,
+    "has_face": true,
+    "runtime_s": 5.27
+  },
+  {
+    "idx": 21,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\21_man_facing_right_business_suit_cigar_angry.mp4",
+    "audio": "1p_emotion\\21_man_facing_right_business_suit_cigar_angry_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.34666633605957,
+    "min_dist": 6.465673446655273,
+    "has_face": true,
+    "runtime_s": 3.33
+  },
+  {
+    "idx": 22,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\22_man_facing_right_business_suit_cigar_happy.mp4",
+    "audio": "1p_emotion\\22_man_facing_right_business_suit_cigar_happy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.851177215576172,
+    "min_dist": 6.869483947753906,
+    "has_face": true,
+    "runtime_s": 3.55
+  },
+  {
+    "idx": 23,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\23_man_facing_left_cowboy_hold_gun_mocking.mp4",
+    "audio": "1p_emotion\\23_man_facing_left_cowboy_hold_gun_mocking_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 7.026607513427734,
+    "min_dist": 7.16135311126709,
+    "has_face": true,
+    "runtime_s": 3.83
+  },
+  {
+    "idx": 24,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\24_man_facing_right_eating_noodle_happy.mp4",
+    "audio": "1p_emotion\\24_man_facing_right_eating_noodle_happy_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.380928993225098,
+    "min_dist": 7.643292427062988,
+    "has_face": true,
+    "runtime_s": 5.66
+  },
+  {
+    "idx": 25,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\25_woman_facing_right_driving_happy.mp4",
+    "audio": "1p_emotion\\25_woman_facing_right_driving_happy_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.470351219177246,
+    "min_dist": 8.337133407592773,
+    "has_face": true,
+    "runtime_s": 3.87
+  },
+  {
+    "idx": 26,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\26_woman_facing_right_driving_crying.mp4",
+    "audio": "1p_emotion\\26_woman_facing_right_driving_crying_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.996442794799805,
+    "min_dist": 7.939745903015137,
+    "has_face": true,
+    "runtime_s": 3.91
+  },
+  {
+    "idx": 27,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\27_man_facing_right_bag_of_gold_confident.mp4",
+    "audio": "1p_emotion\\27_man_facing_right_bag_of_gold_confident_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.234788417816162,
+    "min_dist": 7.04909086227417,
+    "has_face": true,
+    "runtime_s": 4.69
+  },
+  {
+    "idx": 28,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\28_woman_facing_right_rose_angry.mp4",
+    "audio": "1p_emotion\\28_woman_facing_right_rose_angry_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.896559715270996,
+    "min_dist": 8.337674140930176,
+    "has_face": true,
+    "runtime_s": 4.56
+  },
+  {
+    "idx": 29,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\29_woman_facing_right_rose_happy.mp4",
+    "audio": "1p_emotion\\29_woman_facing_right_rose_happy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.542192459106445,
+    "min_dist": 8.581975936889648,
+    "has_face": true,
+    "runtime_s": 4.54
+  },
+  {
+    "idx": 30,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\30_woman_facing_left_teddy_cry.mp4",
+    "audio": "1p_emotion\\30_woman_facing_left_teddy_cry_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 5.267742156982422,
+    "min_dist": 9.986631393432617,
+    "has_face": true,
+    "runtime_s": 5.83
+  },
+  {
+    "idx": 31,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\31_woman_facing_right_teddy_angry.mp4",
+    "audio": "1p_emotion\\31_woman_facing_right_teddy_angry_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 9.249757766723633,
+    "min_dist": 7.302968978881836,
+    "has_face": true,
+    "runtime_s": 5.67
+  },
+  {
+    "idx": 32,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\32_woman_facing_right_plane_phone_worried.mp4",
+    "audio": "1p_emotion\\32_woman_facing_right_plane_phone_worried_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 3.8162059783935547,
+    "min_dist": 7.910059928894043,
+    "has_face": true,
+    "runtime_s": 3.46
+  },
+  {
+    "idx": 33,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\33_woman_facing_right_plane_phone_angry.mp4",
+    "audio": "1p_emotion\\33_woman_facing_right_plane_phone_angry_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 3.8392834663391113,
+    "min_dist": 7.404735088348389,
+    "has_face": true,
+    "runtime_s": 4.51
+  },
+  {
+    "idx": 34,
+    "category": "1p_emotion",
+    "video": "1p_emotion\\34_man_facing_right_basketball_crying.mp4",
+    "audio": "1p_emotion\\34_man_facing_right_basketball_crying_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 3.368663787841797,
+    "min_dist": 8.722870826721191,
+    "has_face": true,
+    "runtime_s": 4.27
+  },
+  {
+    "idx": 1,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\1_woman_cat_cry_rainy.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\1_woman_cat_cry_rainy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.938668727874756,
+    "min_dist": 7.593695163726807,
+    "has_face": true,
+    "runtime_s": 4.27
+  },
+  {
+    "idx": 2,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\2_woman_anime_comb_hair.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\2_woman_anime_comb_hair_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 2.0655899047851562,
+    "min_dist": 11.012198448181152,
+    "has_face": true,
+    "runtime_s": 3.33
+  },
+  {
+    "idx": 3,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\3_man_facing_left_cowboy_raise_gun_mocking.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\3_man_facing_left_cowboy_raise_gun_mocking_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.161120414733887,
+    "min_dist": 8.072620391845703,
+    "has_face": true,
+    "runtime_s": 3.47
+  },
+  {
+    "idx": 4,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\4_woman_right_throw_teddy.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\4_woman_right_throw_teddy_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.593481063842773,
+    "min_dist": 9.697176933288574,
+    "has_face": true,
+    "runtime_s": 3.68
+  },
+  {
+    "idx": 5,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\5_woman_facing_right_teddy_cry.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\5_woman_facing_right_teddy_cry_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.676821708679199,
+    "min_dist": 9.491324424743652,
+    "has_face": true,
+    "runtime_s": 3.83
+  },
+  {
+    "idx": 6,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\6_woman_airplane_lower_head.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\6_woman_airplane_lower_head_speech.wav",
+    "offsets": [
+      2
+    ],
+    "best_conf": 2.454085350036621,
+    "min_dist": 9.125776290893555,
+    "has_face": true,
+    "runtime_s": 3.99
+  },
+  {
+    "idx": 7,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\7_woman_airplane_facing_window.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\7_woman_airplane_facing_window_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 2.2255125045776367,
+    "min_dist": 9.082317352294922,
+    "has_face": true,
+    "runtime_s": 4.6
+  },
+  {
+    "idx": 8,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\8_man_facingcamera_young_man_living_room_with_laptop_gesture.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\8_man_facingcamera_young_man_living_room_with_laptop_gesture_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.82066535949707,
+    "min_dist": 8.915867805480957,
+    "has_face": true,
+    "runtime_s": 3.95
+  },
+  {
+    "idx": 9,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\9_man_facing_elephant.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\9_man_facing_elephant_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 7.194022178649902,
+    "min_dist": 8.556889533996582,
+    "has_face": true,
+    "runtime_s": 4.03
+  },
+  {
+    "idx": 10,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\10_woman_outdoor_rasing_palm.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\10_woman_outdoor_rasing_palm_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 9.310728073120117,
+    "min_dist": 6.873085021972656,
+    "has_face": true,
+    "runtime_s": 3.81
+  },
+  {
+    "idx": 11,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\11_woman_outdoor_rasing_palm_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\11_woman_outdoor_rasing_palm_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.940154075622559,
+    "min_dist": 7.769899368286133,
+    "has_face": true,
+    "runtime_s": 3.98
+  },
+  {
+    "idx": 12,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\12_woman_outdoor_rasing_thumbs_up.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\12_woman_outdoor_rasing_thumbs_up_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.091829299926758,
+    "min_dist": 8.61229419708252,
+    "has_face": true,
+    "runtime_s": 5.8
+  },
+  {
+    "idx": 13,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\13_woman_grandmother_birthday_clasp_hand.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\13_woman_grandmother_birthday_clasp_hand_speech.wav",
+    "offsets": [
+      2,
+      1,
+      0
+    ],
+    "best_conf": 5.566798210144043,
+    "min_dist": 9.154109954833984,
+    "has_face": true,
+    "runtime_s": 7.49
+  },
+  {
+    "idx": 14,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\14_man_chinese_new_year_gesture.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\14_man_chinese_new_year_gesture_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.027109146118164,
+    "min_dist": 8.085464477539062,
+    "has_face": true,
+    "runtime_s": 3.3
+  },
+  {
+    "idx": 15,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\15_man_fisherman_lifts_fishing_rod.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\15_man_fisherman_lifts_fishing_rod_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.3678789138793945,
+    "min_dist": 8.503883361816406,
+    "has_face": true,
+    "runtime_s": 3.75
+  },
+  {
+    "idx": 16,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\16_man_fisherman_holding_a_fish.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\16_man_fisherman_holding_a_fish_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.079431533813477,
+    "min_dist": 8.247627258300781,
+    "has_face": true,
+    "runtime_s": 3.82
+  },
+  {
+    "idx": 17,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\17_man_fisherman_holding_a_fish_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\17_man_fisherman_holding_a_fish_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.46391487121582,
+    "min_dist": 7.398308753967285,
+    "has_face": true,
+    "runtime_s": 3.59
+  },
+  {
+    "idx": 18,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\18_woman_purple_car.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\18_woman_purple_car_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.39964485168457,
+    "min_dist": 8.20730972290039,
+    "has_face": true,
+    "runtime_s": 3.65
+  },
+  {
+    "idx": 19,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\19_woman_sits_sleek_table.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\19_woman_sits_sleek_table_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 9.715463638305664,
+    "min_dist": 7.020321369171143,
+    "has_face": true,
+    "runtime_s": 6.19
+  },
+  {
+    "idx": 20,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\20_woman_chinese_woman_sits_sleek_table.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\20_woman_chinese_woman_sits_sleek_table_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 9.327422142028809,
+    "min_dist": 7.433453559875488,
+    "has_face": true,
+    "runtime_s": 3.99
+  },
+  {
+    "idx": 21,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\21_man_butcher_thumbs_up.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\21_man_butcher_thumbs_up_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.405229568481445,
+    "min_dist": 7.30136251449585,
+    "has_face": true,
+    "runtime_s": 4.22
+  },
+  {
+    "idx": 22,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\22_man_chef_chop.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\22_man_chef_chop_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.3837785720825195,
+    "min_dist": 8.597883224487305,
+    "has_face": true,
+    "runtime_s": 3.94
+  },
+  {
+    "idx": 23,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\23_man_chef_make_soup.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\23_man_chef_make_soup_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.5681257247924805,
+    "min_dist": 8.910295486450195,
+    "has_face": true,
+    "runtime_s": 4.95
+  },
+  {
+    "idx": 24,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\24_woman_tennis.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\24_woman_tennis_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.897395133972168,
+    "min_dist": 7.401976585388184,
+    "has_face": true,
+    "runtime_s": 3.83
+  },
+  {
+    "idx": 25,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\25_woman_tennis_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\25_woman_tennis_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.815195083618164,
+    "min_dist": 8.088273048400879,
+    "has_face": true,
+    "runtime_s": 6.87
+  },
+  {
+    "idx": 26,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\26_man_thumbs_up_smile_burning_building.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\26_man_thumbs_up_smile_burning_building_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.962752342224121,
+    "min_dist": 9.479987144470215,
+    "has_face": true,
+    "runtime_s": 4.11
+  },
+  {
+    "idx": 27,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\27_woman_holding_cup_of_tea.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\27_woman_holding_cup_of_tea_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 3.803677558898926,
+    "min_dist": 7.9741058349609375,
+    "has_face": true,
+    "runtime_s": 6.28
+  },
+  {
+    "idx": 28,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\28_woman_holding_cup_of_tea_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\28_woman_holding_cup_of_tea_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.364441394805908,
+    "min_dist": 7.408215045928955,
+    "has_face": true,
+    "runtime_s": 4.56
+  },
+  {
+    "idx": 29,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\29_man_holdingacappuccino.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\29_man_holdingacappuccino_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.238920211791992,
+    "min_dist": 6.741720199584961,
+    "has_face": true,
+    "runtime_s": 3.67
+  },
+  {
+    "idx": 30,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\30_man_moon_cooking_meal.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\30_man_moon_cooking_meal_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.122959136962891,
+    "min_dist": 10.359631538391113,
+    "has_face": true,
+    "runtime_s": 5.75
+  },
+  {
+    "idx": 31,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\31_woman_singing_pink_microphone.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\31_woman_singing_pink_microphone_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 8.23518180847168,
+    "min_dist": 7.621710777282715,
+    "has_face": true,
+    "runtime_s": 3.23
+  },
+  {
+    "idx": 32,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\32_woman_singing_pink_microphone_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\32_woman_singing_pink_microphone_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.793181419372559,
+    "min_dist": 7.113563537597656,
+    "has_face": true,
+    "runtime_s": 3.73
+  },
+  {
+    "idx": 33,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\33_woman_chinese_woman_sits_sleek_table_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\33_woman_chinese_woman_sits_sleek_table_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 10.38473129272461,
+    "min_dist": 6.713642120361328,
+    "has_face": true,
+    "runtime_s": 3.68
+  },
+  {
+    "idx": 34,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\34_man_anger_soccer_clenching_fists.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\34_man_anger_soccer_clenching_fists_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.4133172035217285,
+    "min_dist": 7.757919788360596,
+    "has_face": true,
+    "runtime_s": 5.3
+  },
+  {
+    "idx": 35,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\35_man_on_edge_rooftop.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\35_man_on_edge_rooftop_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.4798479080200195,
+    "min_dist": 8.55656623840332,
+    "has_face": true,
+    "runtime_s": 5.99
+  },
+  {
+    "idx": 36,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\36_man_on_edge_rooftop_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\36_man_on_edge_rooftop_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.782220840454102,
+    "min_dist": 8.025378227233887,
+    "has_face": true,
+    "runtime_s": 8.5
+  },
+  {
+    "idx": 37,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\37_woman_swimming.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\37_woman_swimming_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.342986106872559,
+    "min_dist": 8.335160255432129,
+    "has_face": true,
+    "runtime_s": 3.76
+  },
+  {
+    "idx": 38,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\38_woman_swimming_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\38_woman_swimming_2_speech.wav",
+    "offsets": [
+      2
+    ],
+    "best_conf": 4.1870527267456055,
+    "min_dist": 10.012240409851074,
+    "has_face": true,
+    "runtime_s": 3.97
+  },
+  {
+    "idx": 39,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\39_woman_painting.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\39_woman_painting_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.16380500793457,
+    "min_dist": 10.382682800292969,
+    "has_face": true,
+    "runtime_s": 5.4
+  },
+  {
+    "idx": 40,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\40_woman_painitng_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\40_woman_painitng_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.004636764526367,
+    "min_dist": 8.213164329528809,
+    "has_face": true,
+    "runtime_s": 4.14
+  },
+  {
+    "idx": 41,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\41_man_playing_grand_piano_underwater.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\41_man_playing_grand_piano_underwater_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.690701484680176,
+    "min_dist": 8.081792831420898,
+    "has_face": true,
+    "runtime_s": 3.61
+  },
+  {
+    "idx": 42,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\42_woman_lightning_guitar.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\42_woman_lightning_guitar_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.278002738952637,
+    "min_dist": 8.092863082885742,
+    "has_face": true,
+    "runtime_s": 4.82
+  },
+  {
+    "idx": 43,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\43_woman_lightning_guitar_2.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\43_woman_lightning_guitar_2_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.095433235168457,
+    "min_dist": 8.325108528137207,
+    "has_face": true,
+    "runtime_s": 3.75
+  },
+  {
+    "idx": 44,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\44_woman_lotus_flower.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\44_woman_lotus_flower_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.252342224121094,
+    "min_dist": 8.702896118164062,
+    "has_face": true,
+    "runtime_s": 4.25
+  },
+  {
+    "idx": 45,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\45_man_tortoise.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\45_man_tortoise_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.315446376800537,
+    "min_dist": 7.469727993011475,
+    "has_face": true,
+    "runtime_s": 3.77
+  },
+  {
+    "idx": 46,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\46_man_basketball.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\46_man_basketball_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 3.814931869506836,
+    "min_dist": 9.993579864501953,
+    "has_face": true,
+    "runtime_s": 4.32
+  },
+  {
+    "idx": 47,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\47_man_tie_blue_suit.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\47_man_tie_blue_suit_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.535037040710449,
+    "min_dist": 10.087512016296387,
+    "has_face": true,
+    "runtime_s": 3.42
+  },
+  {
+    "idx": 48,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\48_man_hold_a_torch.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\48_man_hold_a_torch_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.026052474975586,
+    "min_dist": 9.433910369873047,
+    "has_face": true,
+    "runtime_s": 4.21
+  },
+  {
+    "idx": 49,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\49_man_holding_beer.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\49_man_holding_beer_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 8.626934051513672,
+    "min_dist": 6.138156414031982,
+    "has_face": true,
+    "runtime_s": 3.29
+  },
+  {
+    "idx": 50,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\50_man_turning_right_x_rays.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\50_man_turning_right_x_rays_speech.wav",
+    "offsets": [
+      12
+    ],
+    "best_conf": 3.4917068481445312,
+    "min_dist": 10.336180686950684,
+    "has_face": true,
+    "runtime_s": 3.96
+  },
+  {
+    "idx": 51,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\51_man_gesture_fist.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\51_man_gesture_fist_speech.wav",
+    "offsets": [
+      9
+    ],
+    "best_conf": 7.531935691833496,
+    "min_dist": 8.219609260559082,
+    "has_face": true,
+    "runtime_s": 3.41
+  },
+  {
+    "idx": 52,
+    "category": "1p_mediumshot_actioncontrol",
+    "video": "1p_mediumshot_actioncontrol\\52_man_cartoon_sailor.mp4",
+    "audio": "1p_mediumshot_actioncontrol\\52_man_cartoon_sailor_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 3.125218391418457,
+    "min_dist": 7.339570045471191,
+    "has_face": true,
+    "runtime_s": 4.17
+  },
+  {
+    "idx": 1,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\1_woman_cityscape_move_head.mp4",
+    "audio": "2p_1clip_1talk\\1_woman_cityscape_move_head_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.676928520202637,
+    "min_dist": 8.102322578430176,
+    "has_face": true,
+    "runtime_s": 5.66
+  },
+  {
+    "idx": 2,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\2_woman_cityscape_talk2people.mp4",
+    "audio": "2p_1clip_1talk\\2_woman_cityscape_talk2people_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.461496353149414,
+    "min_dist": 8.611610412597656,
+    "has_face": true,
+    "runtime_s": 4.73
+  },
+  {
+    "idx": 3,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\3_man_suit_beer.mp4",
+    "audio": "2p_1clip_1talk\\3_man_suit_beer_speech.wav",
+    "offsets": [
+      1,
+      3
+    ],
+    "best_conf": 4.449089050292969,
+    "min_dist": 9.418490409851074,
+    "has_face": true,
+    "runtime_s": 5.98
+  },
+  {
+    "idx": 4,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\4_man_shaking_hands_basketball.mp4",
+    "audio": "2p_1clip_1talk\\4_man_shaking_hands_basketball_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.634421348571777,
+    "min_dist": 6.774237632751465,
+    "has_face": true,
+    "runtime_s": 3.82
+  },
+  {
+    "idx": 5,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\5_man_shaking_hands_office.mp4",
+    "audio": "2p_1clip_1talk\\5_man_shaking_hands_office_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.364919662475586,
+    "min_dist": 7.8533782958984375,
+    "has_face": true,
+    "runtime_s": 3.79
+  },
+  {
+    "idx": 6,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\6_man_sit_couch_armor_blurred.mp4",
+    "audio": "2p_1clip_1talk\\6_man_sit_couch_armor_blurred_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.392061233520508,
+    "min_dist": 9.541500091552734,
+    "has_face": true,
+    "runtime_s": 3.63
+  },
+  {
+    "idx": 7,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\7_woman_office_pointing.mp4",
+    "audio": "2p_1clip_1talk\\7_woman_office_pointing_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.728518486022949,
+    "min_dist": 8.183021545410156,
+    "has_face": true,
+    "runtime_s": 7.36
+  },
+  {
+    "idx": 8,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\8_woman_office_lookingup.mp4",
+    "audio": "2p_1clip_1talk\\8_woman_office_lookingup_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.868866920471191,
+    "min_dist": 8.234920501708984,
+    "has_face": true,
+    "runtime_s": 4.92
+  },
+  {
+    "idx": 9,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\9_woman_office_pink_laptop_lookingup.mp4",
+    "audio": "2p_1clip_1talk\\9_woman_office_pink_laptop_lookingup_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 10.011197090148926,
+    "min_dist": 6.972237586975098,
+    "has_face": true,
+    "runtime_s": 4.11
+  },
+  {
+    "idx": 10,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\10_man_fork_to_cake.mp4",
+    "audio": "2p_1clip_1talk\\10_man_fork_to_cake_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 8.616554260253906,
+    "min_dist": 6.741577625274658,
+    "has_face": true,
+    "runtime_s": 4.24
+  },
+  {
+    "idx": 11,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\11_woman_dessert.mp4",
+    "audio": "2p_1clip_1talk\\11_woman_dessert_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.2016191482543945,
+    "min_dist": 7.935208320617676,
+    "has_face": true,
+    "runtime_s": 3.32
+  },
+  {
+    "idx": 12,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\12_woman_beach_blue_bikini.mp4",
+    "audio": "2p_1clip_1talk\\12_woman_beach_blue_bikini_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 9.411467552185059,
+    "min_dist": 6.920271873474121,
+    "has_face": true,
+    "runtime_s": 3.76
+  },
+  {
+    "idx": 13,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\13_man_middle_aged_cat.mp4",
+    "audio": "2p_1clip_1talk\\13_man_middle_aged_cat_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.78674840927124,
+    "min_dist": 6.851334095001221,
+    "has_face": true,
+    "runtime_s": 4.45
+  },
+  {
+    "idx": 14,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\14_man_middle_aged_point.mp4",
+    "audio": "2p_1clip_1talk\\14_man_middle_aged_point_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.036637306213379,
+    "min_dist": 6.133502960205078,
+    "has_face": true,
+    "runtime_s": 3.81
+  },
+  {
+    "idx": 15,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\15_woman_writinginanotebook.mp4",
+    "audio": "2p_1clip_1talk\\15_woman_writinginanotebook_speech.wav",
+    "offsets": [
+      0,
+      15
+    ],
+    "best_conf": 5.237602233886719,
+    "min_dist": 8.584017753601074,
+    "has_face": true,
+    "runtime_s": 6.81
+  },
+  {
+    "idx": 16,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\16_man_warrior_sword.mp4",
+    "audio": "2p_1clip_1talk\\16_man_warrior_sword_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.098633766174316,
+    "min_dist": 8.395438194274902,
+    "has_face": true,
+    "runtime_s": 4.27
+  },
+  {
+    "idx": 17,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\17_woman_scientist_examining_vial.mp4",
+    "audio": "2p_1clip_1talk\\17_woman_scientist_examining_vial_speech.wav",
+    "offsets": [
+      0,
+      -15
+    ],
+    "best_conf": 5.605490684509277,
+    "min_dist": 8.246280670166016,
+    "has_face": true,
+    "runtime_s": 5.17
+  },
+  {
+    "idx": 18,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\18_man_old_storyteller_lighting_a_pipe.mp4",
+    "audio": "2p_1clip_1talk\\18_man_old_storyteller_lighting_a_pipe_speech.wav",
+    "offsets": [
+      0,
+      15
+    ],
+    "best_conf": 5.088028907775879,
+    "min_dist": 8.667829513549805,
+    "has_face": true,
+    "runtime_s": 6.63
+  },
+  {
+    "idx": 19,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\19_man_adjusting_glasses.mp4",
+    "audio": "2p_1clip_1talk\\19_man_adjusting_glasses_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.065732479095459,
+    "min_dist": 6.847376346588135,
+    "has_face": true,
+    "runtime_s": 4.37
+  },
+  {
+    "idx": 20,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\20_man_professor_explaining_a_theory.mp4",
+    "audio": "2p_1clip_1talk\\20_man_professor_explaining_a_theory_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.433381080627441,
+    "min_dist": 8.14657974243164,
+    "has_face": true,
+    "runtime_s": 5.56
+  },
+  {
+    "idx": 21,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\21_man_professor_explaining_a_theory_medium_shot.mp4",
+    "audio": "2p_1clip_1talk\\21_man_professor_explaining_a_theory_medium_shot_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.09075927734375,
+    "min_dist": 9.015170097351074,
+    "has_face": true,
+    "runtime_s": 3.76
+  },
+  {
+    "idx": 22,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\22_woman_hugging_man.mp4",
+    "audio": "2p_1clip_1talk\\22_woman_hugging_man_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.812540054321289,
+    "min_dist": 8.209227561950684,
+    "has_face": true,
+    "runtime_s": 3.66
+  },
+  {
+    "idx": 23,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\23_man_hugging_woman.mp4",
+    "audio": "2p_1clip_1talk\\23_man_hugging_woman_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.507560729980469,
+    "min_dist": 6.873041152954102,
+    "has_face": true,
+    "runtime_s": 4.51
+  },
+  {
+    "idx": 24,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\24_man_hugging_woman_close_up.mp4",
+    "audio": "2p_1clip_1talk\\24_man_hugging_woman_close_up_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.48570442199707,
+    "min_dist": 8.815784454345703,
+    "has_face": true,
+    "runtime_s": 4.03
+  },
+  {
+    "idx": 25,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\25_woman_speak_to_child_gesture.mp4",
+    "audio": "2p_1clip_1talk\\25_woman_speak_to_child_gesture_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.48101806640625,
+    "min_dist": 9.352938652038574,
+    "has_face": true,
+    "runtime_s": 5.43
+  },
+  {
+    "idx": 26,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\26_woman_speak_to_child.mp4",
+    "audio": "2p_1clip_1talk\\26_woman_speak_to_child_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.035484313964844,
+    "min_dist": 7.805599689483643,
+    "has_face": true,
+    "runtime_s": 5.16
+  },
+  {
+    "idx": 27,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\27_woman_office_chat.mp4",
+    "audio": "2p_1clip_1talk\\27_woman_office_chat_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.6540727615356445,
+    "min_dist": 8.329750061035156,
+    "has_face": true,
+    "runtime_s": 5.63
+  },
+  {
+    "idx": 28,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\28_man_shaking_hands_basketball_closeup_shot.mp4",
+    "audio": "2p_1clip_1talk\\28_man_shaking_hands_basketball_closeup_shot_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.18199348449707,
+    "min_dist": 8.064716339111328,
+    "has_face": true,
+    "runtime_s": 3.52
+  },
+  {
+    "idx": 29,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\29_woman_speak_to_child_gesture_2.mp4",
+    "audio": "2p_1clip_1talk\\29_woman_speak_to_child_gesture_2_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.94057559967041,
+    "min_dist": 9.36019229888916,
+    "has_face": true,
+    "runtime_s": 4.43
+  },
+  {
+    "idx": 30,
+    "category": "2p_1clip_1talk",
+    "video": "2p_1clip_1talk\\30_man_sword_tavern.mp4",
+    "audio": "2p_1clip_1talk\\30_man_sword_tavern_speech.wav",
+    "offsets": [
+      0,
+      15
+    ],
+    "best_conf": 2.445010185241699,
+    "min_dist": 9.478288650512695,
+    "has_face": true,
+    "runtime_s": 6.68
+  },
+  {
+    "idx": 1,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\1_woman_man_in_room.mp4",
+    "audio": "2p_2clip_2talk\\1_woman_man_in_room_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 4.139328956604004,
+    "min_dist": 9.054604530334473,
+    "has_face": true,
+    "runtime_s": 3.38
+  },
+  {
+    "idx": 2,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\2_woman_man_purple_flowers.mp4",
+    "audio": "2p_2clip_2talk\\2_woman_man_purple_flowers_speech.wav",
+    "offsets": [
+      -1,
+      0
+    ],
+    "best_conf": 6.374944686889648,
+    "min_dist": 7.476083755493164,
+    "has_face": true,
+    "runtime_s": 4.76
+  },
+  {
+    "idx": 3,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\3_woman_man_crowd_people.mp4",
+    "audio": "2p_2clip_2talk\\3_woman_man_crowd_people_speech.wav",
+    "offsets": [
+      -3,
+      -3
+    ],
+    "best_conf": 3.547882080078125,
+    "min_dist": 9.019814491271973,
+    "has_face": true,
+    "runtime_s": 8.96
+  },
+  {
+    "idx": 4,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\4_woman_man_crowd_people_2.mp4",
+    "audio": "2p_2clip_2talk\\4_woman_man_crowd_people_2_speech.wav",
+    "offsets": [
+      0,
+      -1
+    ],
+    "best_conf": 7.647826194763184,
+    "min_dist": 7.883108139038086,
+    "has_face": true,
+    "runtime_s": 6.86
+  },
+  {
+    "idx": 5,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\5_woman_man_street_argument.mp4",
+    "audio": "2p_2clip_2talk\\5_woman_man_street_argument_speech.wav",
+    "offsets": [
+      0,
+      0
+    ],
+    "best_conf": 4.28574275970459,
+    "min_dist": 7.7982916831970215,
+    "has_face": true,
+    "runtime_s": 7.53
+  },
+  {
+    "idx": 6,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\6_woman_man_home_kitchen.mp4",
+    "audio": "2p_2clip_2talk\\6_woman_man_home_kitchen_speech.wav",
+    "offsets": [
+      -1,
+      1
+    ],
+    "best_conf": 3.993467330932617,
+    "min_dist": 8.440617561340332,
+    "has_face": true,
+    "runtime_s": 4.39
+  },
+  {
+    "idx": 7,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\7_woman_man_home_kitchen_2.mp4",
+    "audio": "2p_2clip_2talk\\7_woman_man_home_kitchen_2_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.658233642578125,
+    "min_dist": 9.278078079223633,
+    "has_face": true,
+    "runtime_s": 3.77
+  },
+  {
+    "idx": 8,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\8_woman_man_space.mp4",
+    "audio": "2p_2clip_2talk\\8_woman_man_space_speech.wav",
+    "offsets": [
+      -2,
+      -1
+    ],
+    "best_conf": 4.927432060241699,
+    "min_dist": 8.896505355834961,
+    "has_face": true,
+    "runtime_s": 4.54
+  },
+  {
+    "idx": 9,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\9_man_woman_space.mp4",
+    "audio": "2p_2clip_2talk\\9_man_woman_space_speech.wav",
+    "offsets": [
+      3
+    ],
+    "best_conf": 3.2373247146606445,
+    "min_dist": 10.389028549194336,
+    "has_face": true,
+    "runtime_s": 3.54
+  },
+  {
+    "idx": 10,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\10_woman_man_beach_conversation.mp4",
+    "audio": "2p_2clip_2talk\\10_woman_man_beach_conversation_speech.wav",
+    "offsets": [
+      -1,
+      -1
+    ],
+    "best_conf": 5.413961410522461,
+    "min_dist": 9.396415710449219,
+    "has_face": true,
+    "runtime_s": 3.94
+  },
+  {
+    "idx": 11,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\11_woman_man_deck.mp4",
+    "audio": "2p_2clip_2talk\\11_woman_man_deck_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.961844444274902,
+    "min_dist": 7.800358772277832,
+    "has_face": true,
+    "runtime_s": 3.09
+  },
+  {
+    "idx": 12,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\12_woman_man_street_conversation.mp4",
+    "audio": "2p_2clip_2talk\\12_woman_man_street_conversation_speech.wav",
+    "offsets": [
+      -1,
+      1
+    ],
+    "best_conf": 4.829835891723633,
+    "min_dist": 7.958014488220215,
+    "has_face": true,
+    "runtime_s": 4.73
+  },
+  {
+    "idx": 13,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\13_woman_man_bamboo_forest.mp4",
+    "audio": "2p_2clip_2talk\\13_woman_man_bamboo_forest_speech.wav",
+    "offsets": [
+      0,
+      0
+    ],
+    "best_conf": 3.8601036071777344,
+    "min_dist": 7.855660438537598,
+    "has_face": true,
+    "runtime_s": 4.28
+  },
+  {
+    "idx": 14,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\14_man_woman_deck.mp4",
+    "audio": "2p_2clip_2talk\\14_man_woman_deck_speech.wav",
+    "offsets": [
+      0,
+      -1
+    ],
+    "best_conf": 3.915346145629883,
+    "min_dist": 10.101460456848145,
+    "has_face": true,
+    "runtime_s": 4.15
+  },
+  {
+    "idx": 15,
+    "category": "2p_2clip_2talk",
+    "video": "2p_2clip_2talk\\15_man_woman_beach_conversation.mp4",
+    "audio": "2p_2clip_2talk\\15_man_woman_beach_conversation_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.4677863121032715,
+    "min_dist": 7.672865390777588,
+    "has_face": true,
+    "runtime_s": 3.15
+  },
+  {
+    "idx": 1,
+    "category": "1p_generalize_chinese",
+    "video": "1p_generalize_chinese\\1_man_facing_left_agent_tense.mp4",
+    "audio": "1p_generalize_chinese\\1_man_facing_left_agent_tense_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.472630500793457,
+    "min_dist": 8.321388244628906,
+    "has_face": true,
+    "runtime_s": 4.0
+  },
+  {
+    "idx": 2,
+    "category": "1p_generalize_chinese",
+    "video": "1p_generalize_chinese\\2_man_facing_right_agent_tense.mp4",
+    "audio": "1p_generalize_chinese\\2_man_facing_right_agent_tense_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 5.089250087738037,
+    "min_dist": 6.69421911239624,
+    "has_face": true,
+    "runtime_s": 3.79
+  },
+  {
+    "idx": 3,
+    "category": "1p_generalize_chinese",
+    "video": "1p_generalize_chinese\\3_man_man_agents.mp4",
+    "audio": "1p_generalize_chinese\\3_man_man_agents_speech.wav",
+    "offsets": [
+      15
+    ],
+    "best_conf": 1.8880014419555664,
+    "min_dist": 9.294297218322754,
+    "has_face": true,
+    "runtime_s": 2.68
+  },
+  {
+    "idx": 4,
+    "category": "1p_generalize_chinese",
+    "video": "1p_generalize_chinese\\4_man_man_agents_sunset.mp4",
+    "audio": "1p_generalize_chinese\\4_man_man_agents_sunset_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 4.140283584594727,
+    "min_dist": 8.781570434570312,
+    "has_face": true,
+    "runtime_s": 3.25
+  },
+  {
+    "idx": 1,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\1_man_young_man_living_room_gesture_in_green.mp4",
+    "audio": "1p_protrait\\1_man_young_man_living_room_gesture_in_green_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.619152069091797,
+    "min_dist": 8.053216934204102,
+    "has_face": true,
+    "runtime_s": 3.92
+  },
+  {
+    "idx": 2,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\2_man_camera_trackingshot_young_man_city_walk_hodling_coffee.mp4",
+    "audio": "1p_protrait\\2_man_camera_trackingshot_young_man_city_walk_hodling_coffee_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.656409740447998,
+    "min_dist": 7.837721347808838,
+    "has_face": true,
+    "runtime_s": 4.0
+  },
+  {
+    "idx": 3,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\3_woman_camera_trackingshot_young_woman_city_walk_hodling_coffee.mp4",
+    "audio": "1p_protrait\\3_woman_camera_trackingshot_young_woman_city_walk_hodling_coffee_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 8.022980690002441,
+    "min_dist": 8.182730674743652,
+    "has_face": true,
+    "runtime_s": 3.61
+  },
+  {
+    "idx": 4,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\4_man_facing_elephant.mp4",
+    "audio": "1p_protrait\\4_man_facing_elephant_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.605038642883301,
+    "min_dist": 8.427504539489746,
+    "has_face": true,
+    "runtime_s": 4.76
+  },
+  {
+    "idx": 5,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\5_woman_outdoor_gesture.mp4",
+    "audio": "1p_protrait\\5_woman_outdoor_gesture_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.70362663269043,
+    "min_dist": 9.233054161071777,
+    "has_face": true,
+    "runtime_s": 4.33
+  },
+  {
+    "idx": 6,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\6_woman_outdoor_rasing_thumbs_up.mp4",
+    "audio": "1p_protrait\\6_woman_outdoor_rasing_thumbs_up_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.704572677612305,
+    "min_dist": 7.409486293792725,
+    "has_face": true,
+    "runtime_s": 4.02
+  },
+  {
+    "idx": 7,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\7_woman_grandmother_birthday_clasp_hand.mp4",
+    "audio": "1p_protrait\\7_woman_grandmother_birthday_clasp_hand_speech.wav",
+    "offsets": [
+      1,
+      -11
+    ],
+    "best_conf": 6.468538284301758,
+    "min_dist": 9.450662612915039,
+    "has_face": true,
+    "runtime_s": 6.19
+  },
+  {
+    "idx": 8,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\8_man_chinese_new_year_gesture.mp4",
+    "audio": "1p_protrait\\8_man_chinese_new_year_gesture_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.096127033233643,
+    "min_dist": 7.926385402679443,
+    "has_face": true,
+    "runtime_s": 4.0
+  },
+  {
+    "idx": 9,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\9_woman_grassy_lawn_tucks_hair.mp4",
+    "audio": "1p_protrait\\9_woman_grassy_lawn_tucks_hair_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.508258819580078,
+    "min_dist": 9.195428848266602,
+    "has_face": true,
+    "runtime_s": 3.6
+  },
+  {
+    "idx": 10,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\10_man_fisherman_lifts_fishing_rod.mp4",
+    "audio": "1p_protrait\\10_man_fisherman_lifts_fishing_rod_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.452547550201416,
+    "min_dist": 7.815138339996338,
+    "has_face": true,
+    "runtime_s": 3.73
+  },
+  {
+    "idx": 11,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\11_woman_purple_car.mp4",
+    "audio": "1p_protrait\\11_woman_purple_car_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.876542091369629,
+    "min_dist": 9.159249305725098,
+    "has_face": true,
+    "runtime_s": 3.35
+  },
+  {
+    "idx": 12,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\12_woman_sits_sleek_table.mp4",
+    "audio": "1p_protrait\\12_woman_sits_sleek_table_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 8.565743446350098,
+    "min_dist": 8.105332374572754,
+    "has_face": true,
+    "runtime_s": 5.3
+  },
+  {
+    "idx": 13,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\13_woman_chinese_woman_sits_sleek_table.mp4",
+    "audio": "1p_protrait\\13_woman_chinese_woman_sits_sleek_table_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.0017805099487305,
+    "min_dist": 9.775236129760742,
+    "has_face": true,
+    "runtime_s": 3.5
+  },
+  {
+    "idx": 14,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\14_man_butcher_gesture.mp4",
+    "audio": "1p_protrait\\14_man_butcher_gesture_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.8181657791137695,
+    "min_dist": 6.906835556030273,
+    "has_face": true,
+    "runtime_s": 4.26
+  },
+  {
+    "idx": 15,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\15_man_butcher_thumbs_up.mp4",
+    "audio": "1p_protrait\\15_man_butcher_thumbs_up_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.367437362670898,
+    "min_dist": 8.354731559753418,
+    "has_face": true,
+    "runtime_s": 3.92
+  },
+  {
+    "idx": 16,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\16_man_young_man_living_room_gesture.mp4",
+    "audio": "1p_protrait\\16_man_young_man_living_room_gesture_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 9.053905487060547,
+    "min_dist": 6.674588680267334,
+    "has_face": true,
+    "runtime_s": 3.58
+  },
+  {
+    "idx": 17,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\17_woman_chinese_grandmother_birthday_clasp_hand.mp4",
+    "audio": "1p_protrait\\17_woman_chinese_grandmother_birthday_clasp_hand_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.322129249572754,
+    "min_dist": 8.903109550476074,
+    "has_face": true,
+    "runtime_s": 5.38
+  },
+  {
+    "idx": 18,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\18_man_chef_chop.mp4",
+    "audio": "1p_protrait\\18_man_chef_chop_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.482637405395508,
+    "min_dist": 9.99166488647461,
+    "has_face": true,
+    "runtime_s": 3.55
+  },
+  {
+    "idx": 19,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\19_man_chef_make_soup.mp4",
+    "audio": "1p_protrait\\19_man_chef_make_soup_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 8.574638366699219,
+    "min_dist": 6.407970905303955,
+    "has_face": true,
+    "runtime_s": 4.27
+  },
+  {
+    "idx": 20,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\20_woman_tennis.mp4",
+    "audio": "1p_protrait\\20_woman_tennis_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 6.759686470031738,
+    "min_dist": 8.630562782287598,
+    "has_face": true,
+    "runtime_s": 3.69
+  },
+  {
+    "idx": 21,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\21_man_holding_basketball.mp4",
+    "audio": "1p_protrait\\21_man_holding_basketball_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 3.840503692626953,
+    "min_dist": 8.63887882232666,
+    "has_face": true,
+    "runtime_s": 3.32
+  },
+  {
+    "idx": 22,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\22_woman_holding_cup_of_tea.mp4",
+    "audio": "1p_protrait\\22_woman_holding_cup_of_tea_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.570705413818359,
+    "min_dist": 7.065253257751465,
+    "has_face": true,
+    "runtime_s": 4.3
+  },
+  {
+    "idx": 23,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\23_man_strikes_a_wooden_board.mp4",
+    "audio": "1p_protrait\\23_man_strikes_a_wooden_board_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.619272232055664,
+    "min_dist": 7.578442573547363,
+    "has_face": true,
+    "runtime_s": 3.37
+  },
+  {
+    "idx": 24,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\24_man_holdingacappuccino.mp4",
+    "audio": "1p_protrait\\24_man_holdingacappuccino_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.789984703063965,
+    "min_dist": 8.112805366516113,
+    "has_face": true,
+    "runtime_s": 3.3
+  },
+  {
+    "idx": 25,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\25_man_moon_cooking_meal.mp4",
+    "audio": "1p_protrait\\25_man_moon_cooking_meal_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 5.738994598388672,
+    "min_dist": 9.504044532775879,
+    "has_face": true,
+    "runtime_s": 4.6
+  },
+  {
+    "idx": 26,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\26_woman_singing_pink_microphone.mp4",
+    "audio": "1p_protrait\\26_woman_singing_pink_microphone_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.404167652130127,
+    "min_dist": 7.203592777252197,
+    "has_face": true,
+    "runtime_s": 3.38
+  },
+  {
+    "idx": 27,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\27_woman_warrior.mp4",
+    "audio": "1p_protrait\\27_woman_warrior_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.011064529418945,
+    "min_dist": 8.8136625289917,
+    "has_face": true,
+    "runtime_s": 5.16
+  },
+  {
+    "idx": 28,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\28_man_anger_soccer_clenching_fists.mp4",
+    "audio": "1p_protrait\\28_man_anger_soccer_clenching_fists_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 7.514249324798584,
+    "min_dist": 7.791650295257568,
+    "has_face": true,
+    "runtime_s": 3.68
+  },
+  {
+    "idx": 29,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\29_man_on_edge_rooftop.mp4",
+    "audio": "1p_protrait\\29_man_on_edge_rooftop_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.727279186248779,
+    "min_dist": 7.044600963592529,
+    "has_face": true,
+    "runtime_s": 3.74
+  },
+  {
+    "idx": 30,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\30_man_on_edge_rooftop_medium_wide.mp4",
+    "audio": "1p_protrait\\30_man_on_edge_rooftop_medium_wide_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 6.664005756378174,
+    "min_dist": 7.36611795425415,
+    "has_face": true,
+    "runtime_s": 3.39
+  },
+  {
+    "idx": 31,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\31_woman_swimming.mp4",
+    "audio": "1p_protrait\\31_woman_swimming_speech.wav",
+    "offsets": [],
+    "best_conf": 0.0,
+    "min_dist": 0.0,
+    "has_face": false,
+    "runtime_s": 3.02
+  },
+  {
+    "idx": 32,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\32_woman_painting.mp4",
+    "audio": "1p_protrait\\32_woman_painting_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 8.550032615661621,
+    "min_dist": 7.833868980407715,
+    "has_face": true,
+    "runtime_s": 4.37
+  },
+  {
+    "idx": 33,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\33_woman_lightning_guitar.mp4",
+    "audio": "1p_protrait\\33_woman_lightning_guitar_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 8.658227920532227,
+    "min_dist": 6.776548862457275,
+    "has_face": true,
+    "runtime_s": 3.88
+  },
+  {
+    "idx": 34,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\34_woman_lotus_flower.mp4",
+    "audio": "1p_protrait\\34_woman_lotus_flower_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.719054222106934,
+    "min_dist": 8.705973625183105,
+    "has_face": true,
+    "runtime_s": 4.05
+  },
+  {
+    "idx": 35,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\35_man_tortoise.mp4",
+    "audio": "1p_protrait\\35_man_tortoise_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 5.505531311035156,
+    "min_dist": 8.402029991149902,
+    "has_face": true,
+    "runtime_s": 4.2
+  },
+  {
+    "idx": 36,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\36_man_tie_blue_suit.mp4",
+    "audio": "1p_protrait\\36_man_tie_blue_suit_speech.wav",
+    "offsets": [
+      -1
+    ],
+    "best_conf": 7.352442264556885,
+    "min_dist": 7.52606725692749,
+    "has_face": true,
+    "runtime_s": 3.68
+  },
+  {
+    "idx": 37,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\37_man_hold_a_torch.mp4",
+    "audio": "1p_protrait\\37_man_hold_a_torch_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 3.2394938468933105,
+    "min_dist": 6.612694263458252,
+    "has_face": true,
+    "runtime_s": 3.03
+  },
+  {
+    "idx": 38,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\38_girl_hold_a_teddy_bear.mp4",
+    "audio": "1p_protrait\\38_girl_hold_a_teddy_bear_speech.wav",
+    "offsets": [
+      1
+    ],
+    "best_conf": 7.806216716766357,
+    "min_dist": 7.8445353507995605,
+    "has_face": true,
+    "runtime_s": 4.16
+  },
+  {
+    "idx": 39,
+    "category": "1p_protrait",
+    "video": "1p_protrait\\39_yong_boy_speaking_robot.mp4",
+    "audio": "1p_protrait\\39_yong_boy_speaking_robot_speech.wav",
+    "offsets": [
+      0
+    ],
+    "best_conf": 6.527413368225098,
+    "min_dist": 9.472411155700684,
+    "has_face": true,
+    "runtime_s": 4.51
+  }
+]
