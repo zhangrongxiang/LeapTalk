@@ -3,7 +3,7 @@
 <br>
 
 <a href="https://zhangrongxiang.github.io/leaptalk-page/"><img src="https://img.shields.io/badge/Web-Project Page-1d72b8.svg" alt="Project Page"></a>
-<a href="https://arxiv.org/abs/2608.00079"><img src="https://img.shields.io/badge/arXiv-ViBT-A42C25.svg" alt="arXiv"></a>
+<a href="https://arxiv.org/abs/2608.00079"><img src="https://img.shields.io/badge/arXiv-2608.00079-b31b1b.svg" alt="arXiv"></a>
 <a href="https://huggingface.co/z-rx/leaptalk"><img src="https://img.shields.io/badge/🤗_HuggingFace-Model-ffbd45.svg" alt="HuggingFace Model"></a>
 
 
