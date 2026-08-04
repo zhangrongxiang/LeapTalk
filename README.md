@@ -12,7 +12,7 @@
 - **Real-time streaming**: Generate open-ended talking-head videos from a reference image and speech audio in a chunk-by-chunk streaming pipeline.
 - **One-step inference**: Synthesize each video chunk with only **1 NFE**, reaching up to **200 FPS** in the Lite setting.
 - **High-fidelity lip synchronization**: Audio-driven classifier-free guidance strengthens mouth motion and speech alignment under extreme step reduction.
-- **Stable long-video identity**: Preserve facial structure, appearance, and visual style over long rollouts by combining Brownian Bridge anchoring with autoregressive motion prefixes.
+- **Stable long-video identity**: Preserve facial structure, appearance, and visual style over long rollouts by reformulating talking-head generation as a data-to-data transport process via a Brownian bridge model, implemented through a novel **Bridge Forcing** paradigm.
 
 ## 🔧Installation
 #### 1. Create a Conda environment
