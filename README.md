@@ -67,14 +67,15 @@ bash inf.sh
 ```
 
 ## Web Demo
-The web demo provides a real-time digital human conversation experience: the left side shows the generated speaking video and runtime metrics, while the right side keeps the user input and dialogue history. Doubao realtime dialogue handles text/voice input, response generation, and TTS; LeapTalk renders the talking-head video from the selected portrait image and streamed dialogue audio.
+The web demo provides a real-time digital human conversation experience. After loading a portrait image, users can interact with the digital human through either text messages or microphone speech. The left side shows the streaming speaking video and runtime metrics, while the right side keeps the user input and dialogue history.
 
+![The portrait of this girl is AI-generated.](./assets/webpage.png)
 #### 1. Configure keys and model paths
 ```bash
 cp .env.example .env
 ```
 
-Fill the Doubao realtime dialogue credentials and the LeapTalk model paths in `.env`:
+Fill the Doubao APP ID/ACCESS TOKEN (Can be obtained from this [tutorial](https://www.volcengine.com/docs/6561/2119699?lang=zh))  and the LeapTalk model paths in `.env`:
 ```bash
 DOUBAO_APP_ID=YOUR_DOUBAO_APP_ID
 DOUBAO_ACCESS_TOKEN=YOUR_DOUBAO_ACCESS_TOKEN
@@ -91,7 +92,7 @@ LEAPTALK_AUDIO_PROJ="./models/leaptalk/audio_proj_step_10400.pt"
 python web_server.py
 ```
 
-Open `http://localhost:7860`, load a portrait image, connect, then use text input or hold the record button to talk with the digital human.
+Open `http://localhost:7860`, load a portrait image, connect, then type a message or hold the record button to talk with the digital human in real time.
 
 ## 🔥Training
 #### 1. Prepare VividHead

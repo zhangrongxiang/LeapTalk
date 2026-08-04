@@ -663,6 +663,34 @@ def _resolve_runtime_path(path_or_url: str) -> Path:
     return Path(raw).expanduser().resolve()
 
 
+class TurnMessageGate:
+    _SYNCED_TYPES = {"user_transcript", "assistant_delta", "assistant_final"}
+
+    def __init__(self, send_client: Callable[[dict], Awaitable[None]]) -> None:
+        self._send_client = send_client
+        self._pending: list[dict] = []
+        self._released = False
+        self._lock = asyncio.Lock()
+
+    async def send(self, payload: dict) -> None:
+        if payload.get("type") in self._SYNCED_TYPES:
+            async with self._lock:
+                if not self._released:
+                    self._pending.append(dict(payload))
+                    return
+        await self._send_client(payload)
+
+    async def release(self) -> None:
+        async with self._lock:
+            if self._released and not self._pending:
+                return
+            self._released = True
+            pending = self._pending
+            self._pending = []
+        for payload in pending:
+            await self._send_client(payload)
+
+
 app = FastAPI(title="LeapTalk Web")
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 app.mount("/runtime", StaticFiles(directory=str(RUNTIME_DIR)), name="runtime")
@@ -674,15 +702,9 @@ async def _startup() -> None:
     for path in (AVATAR_DIR, AUDIO_DIR, VIDEO_DIR):
         path.mkdir(parents=True, exist_ok=True)
     logger.info("Doubao auth mode: %s", _doubao_auth_mode())
-    asyncio.create_task(_warm_leaptalk())
-
-
-async def _warm_leaptalk() -> None:
-    try:
-        await leaptalk_engine.ensure_loaded()
-        logger.info("LeapTalk model warmup completed")
-    except Exception:
-        logger.exception("LeapTalk model warmup failed")
+    logger.info("Warming up LeapTalk model before accepting web connections...")
+    await leaptalk_engine.ensure_loaded()
+    logger.info("LeapTalk model warmup completed; web server is ready.")
 
 
 @app.get("/")
@@ -739,11 +761,12 @@ async def chat_ws(websocket: WebSocket) -> None:
         *,
         text_mode: bool,
         audio_sink: Callable[[bytes], Awaitable[None]],
+        send_dialogue: Callable[[dict], Awaitable[None]],
     ) -> tuple[str, str, bytes]:
         return await run_doubao_turn(
             input_stream,
             text_mode=text_mode,
-            send_client=send_client,
+            send_client=send_dialogue,
             conversation_id=conversation_id,
             audio_sink=audio_sink,
             input_mod="text" if text_mode else "audio",
@@ -753,12 +776,18 @@ async def chat_ws(websocket: WebSocket) -> None:
         async def inputs() -> AsyncIterator[InputEvent]:
             yield InputEvent(text=text)
 
+        message_gate = TurnMessageGate(send_client)
+
+        async def send_synced_video_chunk(meta: dict, data: bytes) -> None:
+            await send_video_chunk(meta, data)
+            await message_gate.release()
+
         streamer = LeapTalkTurnStreamer(
             leaptalk_engine,
             turn_id=uuid.uuid4().hex,
             image_path=_resolve_runtime_path(image_url),
             send_client=send_client,
-            send_video_chunk=send_video_chunk,
+            send_video_chunk=send_synced_video_chunk,
         )
         await streamer.start()
         await send_client({"type": "status", "state": "thinking", "message": "Doubao is replying."})
@@ -767,10 +796,12 @@ async def chat_ws(websocket: WebSocket) -> None:
                 inputs(),
                 text_mode=True,
                 audio_sink=streamer.feed,
+                send_dialogue=message_gate.send,
             )
-            await finish_turn(user_text or text, assistant_text, pcm, image_url, streamer)
+            await finish_turn(user_text or text, assistant_text, pcm, image_url, streamer, message_gate)
         except Exception as exc:
             await streamer.cancel()
+            await message_gate.release()
             logger.exception("Text turn failed")
             await send_client({"type": "error", "message": str(exc)})
             await send_client({"type": "status", "state": "idle", "message": "Turn failed. Ready for the next turn."})
@@ -796,12 +827,18 @@ async def chat_ws(websocket: WebSocket) -> None:
                 yield InputEvent(audio=b"\x00" * chunk_size)
                 await asyncio.sleep(0.2)
 
+        message_gate = TurnMessageGate(send_client)
+
+        async def send_synced_video_chunk(meta: dict, data: bytes) -> None:
+            await send_video_chunk(meta, data)
+            await message_gate.release()
+
         streamer = LeapTalkTurnStreamer(
             leaptalk_engine,
             turn_id=uuid.uuid4().hex,
             image_path=_resolve_runtime_path(image_url),
             send_client=send_client,
-            send_video_chunk=send_video_chunk,
+            send_video_chunk=send_synced_video_chunk,
         )
         await streamer.start()
         await send_client({"type": "status", "state": "listening", "message": "Doubao is transcribing and replying."})
@@ -810,10 +847,12 @@ async def chat_ws(websocket: WebSocket) -> None:
                 inputs(),
                 text_mode=False,
                 audio_sink=streamer.feed,
+                send_dialogue=message_gate.send,
             )
-            await finish_turn(user_text, assistant_text, pcm, image_url, streamer)
+            await finish_turn(user_text, assistant_text, pcm, image_url, streamer, message_gate)
         except Exception as exc:
             await streamer.cancel()
+            await message_gate.release()
             logger.exception("Audio turn failed")
             await send_client({"type": "error", "message": str(exc)})
             await send_client({"type": "status", "state": "idle", "message": "Turn failed. Ready for the next turn."})
@@ -824,10 +863,12 @@ async def chat_ws(websocket: WebSocket) -> None:
         pcm: bytes,
         image_url: str,
         streamer: LeapTalkTurnStreamer,
+        message_gate: TurnMessageGate,
     ) -> None:
-        await send_client({"type": "assistant_final", "text": assistant_text})
+        await message_gate.send({"type": "assistant_final", "text": assistant_text})
         if not pcm:
             await streamer.cancel()
+            await message_gate.release()
             await send_client({"type": "status", "state": "idle", "message": "No audio returned from Doubao."})
             return
         wav_path = AUDIO_DIR / f"{streamer.turn_id}.wav"
@@ -835,10 +876,12 @@ async def chat_ws(websocket: WebSocket) -> None:
         try:
             await streamer.finish()
         except Exception as exc:
+            await message_gate.release()
             logger.exception("LeapTalk video generation failed")
             await send_client({"type": "error", "message": str(exc)})
             await send_client({"type": "status", "state": "idle", "message": "Video generation failed. Ready for the next turn."})
             return
+        await message_gate.release()
         await send_client(
             {
                 "type": "turn_complete",

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,6 @@
         <header class="topbar">
           <div>
             <div class="eyebrow">LeapTalk Live</div>
-            <h1>数字人语音对话</h1>
           </div>
           <div class="connection" id="connectionState">
             <span class="dot"></span>
@@ -21,10 +20,10 @@
         </header>
 
         <div class="video-shell">
-          <video id="avatarVideo" class="avatar-video" controls playsinline></video>
+          <video id="avatarVideo" class="avatar-video" playsinline></video>
           <img id="avatarImage" class="avatar-image" alt="Avatar preview" />
           <div class="video-placeholder" id="videoPlaceholder">
-            <span>等待生成实时说话视频</span>
+            <span>Waiting for live talking video</span>
           </div>
           <div class="hud">
             <div>
@@ -45,32 +44,32 @@
         <div class="controls-row">
           <label class="file-button">
             <input id="avatarInput" type="file" accept="image/*" />
-            <span>加载人物图片</span>
+            <span>Load Image</span>
           </label>
-          <button id="connectButton" class="pi-button primary">连接</button>
-          <button id="recordButton" class="pi-button" disabled>按住录音</button>
+          <button id="connectButton" class="pi-button primary">Connect</button>
+          <button id="recordButton" class="pi-button" disabled>Hold to Talk</button>
           <div class="wave" id="voiceWave">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
 
-        <div class="status-line" id="statusLine">填写 .env 后启动服务，连接即可开始。</div>
+        <div class="status-line" id="statusLine">Configure .env, start the server, then connect to begin.</div>
       </section>
 
       <aside class="chat-panel">
         <header class="chat-header">
           <div>
             <div class="eyebrow">Conversation</div>
-            <h2>对话过程</h2>
+            <h2>Chat History</h2>
           </div>
-          <button id="clearButton" class="icon-button" title="清空对话">×</button>
+          <button id="clearButton" class="icon-button" title="Clear conversation">×</button>
         </header>
 
         <div id="messages" class="messages"></div>
 
         <form id="chatForm" class="input-bar">
-          <textarea id="textInput" rows="2" placeholder="输入文字，或按住左侧录音按钮说话"></textarea>
-          <button id="sendButton" class="pi-button primary" type="submit" disabled>发送</button>
+          <textarea id="textInput" rows="2" placeholder="Type a message, or hold the record button to speak"></textarea>
+          <button id="sendButton" class="pi-button primary" type="submit" disabled>Send</button>
         </form>
       </aside>
     </main>
@@ -100,6 +99,8 @@
         mseFailed: false,
         recorderStopping: false,
         videoRevealToken: 0,
+        dialogueHoldActive: false,
+        pendingDialogueEvents: [],
       }
 
       const els = {
@@ -126,7 +127,7 @@
         state.connected = connected
         els.connectionState.classList.toggle('online', connected)
         els.connectionState.querySelector('span:last-child').textContent = connected ? 'Connected' : 'Disconnected'
-        els.connectButton.textContent = connected ? '断开' : '连接'
+        els.connectButton.textContent = connected ? 'Disconnect' : 'Connect'
         els.sendButton.disabled = !connected
         els.recordButton.disabled = !connected
       }
@@ -235,7 +236,7 @@
       async function fetchVideoObjectUrl(url) {
         const cacheBustedUrl = `${url}?t=${Date.now()}`
         const response = await fetch(cacheBustedUrl, { cache: 'no-store' })
-        if (!response.ok) throw new Error(`视频加载失败：HTTP ${response.status}`)
+        if (!response.ok) throw new Error(`Video loading failed: HTTP ${response.status}`)
         const blob = await response.blob()
         return URL.createObjectURL(blob)
       }
@@ -248,18 +249,18 @@
       async function decodeVideoChunkPacket(raw) {
         const buffer = raw instanceof ArrayBuffer ? raw : await raw.arrayBuffer()
         const view = new DataView(buffer)
-        if (buffer.byteLength < 8) throw new Error('视频 chunk 数据过短')
+        if (buffer.byteLength < 8) throw new Error('Video chunk packet is too short')
         const magic = String.fromCharCode(
           view.getUint8(0),
           view.getUint8(1),
           view.getUint8(2),
           view.getUint8(3),
         )
-        if (magic !== 'LTF4' && magic !== 'LTMP') throw new Error('未知二进制消息')
+        if (magic !== 'LTF4' && magic !== 'LTMP') throw new Error('Unknown binary message')
         const metaLength = view.getUint32(4, false)
         const metaStart = 8
         const metaEnd = metaStart + metaLength
-        if (metaEnd > buffer.byteLength) throw new Error('视频 chunk 元信息不完整')
+        if (metaEnd > buffer.byteLength) throw new Error('Incomplete video chunk metadata')
         const metaBytes = new Uint8Array(buffer, metaStart, metaLength)
         const meta = JSON.parse(new TextDecoder().decode(metaBytes))
         const videoBytes = buffer.slice(metaEnd)
@@ -280,6 +281,34 @@
         els.videoPlaceholder.style.display = 'none'
       }
 
+      function releaseDialogueEvents() {
+        state.dialogueHoldActive = false
+        const pending = state.pendingDialogueEvents.splice(0)
+        for (const data of pending) {
+          handleDialogueEvent(data)
+        }
+      }
+
+      function handleDialogueEvent(data) {
+        if (data.type === 'user_transcript') {
+          addMessage('user', data.text)
+        } else if (data.type === 'assistant_delta') {
+          const draft = getAssistantDraft()
+          draft.textContent += data.text || ''
+          scrollMessages()
+        } else if (data.type === 'assistant_final') {
+          finishAssistantDraft(data.text || '')
+        }
+      }
+
+      function queueOrHandleDialogueEvent(data) {
+        if (state.dialogueHoldActive) {
+          state.pendingDialogueEvents.push(data)
+          return
+        }
+        handleDialogueEvent(data)
+      }
+
       function revealVideoWhenFrameReady() {
         const video = els.avatarVideo
         const token = ++state.videoRevealToken
@@ -289,6 +318,7 @@
         const reveal = () => {
           if (token !== state.videoRevealToken) return
           showVideo()
+          releaseDialogueEvents()
         }
 
         if ('requestVideoFrameCallback' in video) {
@@ -329,7 +359,7 @@
             sourceBuffer.addEventListener('updateend', appendPendingMseSegments)
             sourceBuffer.addEventListener('error', () => {
               state.mseFailed = true
-              setStatus('MSE 视频缓冲失败，已切换到兼容播放。')
+              setStatus('MSE video buffering failed. Switched to compatibility playback.')
             })
             state.sourceBuffer = sourceBuffer
             state.mseReady = true
@@ -337,8 +367,8 @@
           } catch (err) {
             state.mseFailed = true
             const msg = err instanceof Error ? err.message : String(err)
-            addMessage('system', `MSE 初始化失败：${msg}`)
-            setStatus('MSE 初始化失败，已切换到兼容播放。')
+            addMessage('system', `MSE initialization failed: ${msg}`)
+            setStatus('MSE initialization failed. Switched to compatibility playback.')
           }
         }, { once: true })
         return true
@@ -361,14 +391,14 @@
           sourceBuffer.timestampOffset = segment.timestampOffset
           sourceBuffer.appendBuffer(segment.bytes)
           els.avatarVideo.play().catch(() => {
-            setStatus('浏览器阻止自动播放，请点击视频继续。')
+            setStatus('Autoplay was blocked. Click the video to continue.')
           })
           revealVideoWhenFrameReady()
         } catch (err) {
           state.mseFailed = true
           const msg = err instanceof Error ? err.message : String(err)
-          addMessage('system', `MSE append 失败：${msg}`)
-          setStatus('MSE append 失败，已切换到兼容播放。')
+          addMessage('system', `MSE append failed: ${msg}`)
+          setStatus('MSE append failed. Switched to compatibility playback.')
         }
       }
 
@@ -420,7 +450,7 @@
           playNextVideoChunk()
         }
         await els.avatarVideo.play().catch(() => {
-          setStatus('浏览器阻止自动播放，请点击视频继续。')
+          setStatus('Autoplay was blocked. Click the video to continue.')
         })
         revealVideoWhenFrameReady()
       }
@@ -443,14 +473,14 @@
         ws.onopen = () => {
           setConnected(true)
           ws.send(JSON.stringify({ type: 'init', avatar_url: state.avatarUrl }))
-          setStatus('已连接，可以开始对话。')
+          setStatus('Connected. Ready to start the conversation.')
         }
         ws.onclose = () => {
           state.ws = null
           setConnected(false)
-          setStatus('连接已断开。')
+          setStatus('Disconnected.')
         }
-        ws.onerror = () => setStatus('WebSocket 连接错误。')
+        ws.onerror = () => setStatus('WebSocket connection error.')
         ws.onmessage = async (event) => {
           if (typeof event.data !== 'string') {
             try {
@@ -458,7 +488,7 @@
               enqueueVideoChunk(chunk)
               if (chunk.generation_fps) els.fpsValue.textContent = Number(chunk.generation_fps).toFixed(1)
               els.latencyValue.textContent = `${Number(chunk.elapsed_seconds || 0).toFixed(1)}s`
-              setStatus(`收到 WebSocket 视频 chunk ${chunk.chunk_index}`)
+              setStatus(`Received WebSocket video chunk ${chunk.chunk_index}`)
             } catch (err) {
               const msg = err instanceof Error ? err.message : String(err)
               addMessage('system', msg)
@@ -472,40 +502,43 @@
           } else if (data.type === 'status') {
             setStatus(data.message)
           } else if (data.type === 'user_transcript') {
-            addMessage('user', data.text)
+            queueOrHandleDialogueEvent(data)
           } else if (data.type === 'assistant_delta') {
-            const draft = getAssistantDraft()
-            draft.textContent += data.text || ''
-            scrollMessages()
+            queueOrHandleDialogueEvent(data)
           } else if (data.type === 'assistant_final') {
-            finishAssistantDraft(data.text || '')
+            queueOrHandleDialogueEvent(data)
           } else if (data.type === 'video_generating') {
             els.voiceWave.classList.remove('active')
             setStatus(data.message)
           } else if (data.type === 'video_stream_start') {
             resetVideoPlayback()
+            state.dialogueHoldActive = true
+            state.pendingDialogueEvents = []
             els.voiceWave.classList.remove('active')
             setStatus(data.message)
           } else if (data.type === 'video_stream_ready') {
-            setStatus(`视频流准备完成：${data.frames_per_chunk} frames/chunk`)
+            setStatus(`Video stream ready: ${data.frames_per_chunk} frames/chunk`)
           } else if (data.type === 'fps_update') {
             els.fpsValue.textContent = Number(data.fps).toFixed(1)
           } else if (data.type === 'video_chunk') {
             enqueueVideoChunk(data)
             if (data.generation_fps) els.fpsValue.textContent = Number(data.generation_fps).toFixed(1)
             els.latencyValue.textContent = `${Number(data.elapsed_seconds || 0).toFixed(1)}s`
-            setStatus(`收到视频 chunk ${data.chunk_index}`)
+            setStatus(`Received video chunk ${data.chunk_index}`)
           } else if (data.type === 'video_chunk_ready') {
             if (data.generation_fps) els.fpsValue.textContent = Number(data.generation_fps).toFixed(1)
             els.latencyValue.textContent = `${Number(data.elapsed_seconds || 0).toFixed(1)}s`
           } else if (data.type === 'video_stream_end') {
             finishMseStream()
-            setStatus(`视频流完成：${data.chunks} chunks`)
+            releaseDialogueEvents()
+            setStatus(`Video stream complete: ${data.chunks} chunks`)
           } else if (data.type === 'turn_complete') {
+            releaseDialogueEvents()
             setStatus('Ready.')
           } else if (data.type === 'error') {
-            addMessage('system', data.message || '发生错误')
-            setStatus(data.message || '发生错误')
+            releaseDialogueEvents()
+            addMessage('system', data.message || 'An error occurred')
+            setStatus(data.message || 'An error occurred')
           }
         }
       }
@@ -577,7 +610,7 @@
 
       async function startPcmRecorder() {
         const AudioContextCtor = window.AudioContext || window.webkitAudioContext
-        if (!AudioContextCtor) throw new Error('当前浏览器不支持 AudioContext 录音。')
+        if (!AudioContextCtor) throw new Error('This browser does not support AudioContext recording.')
         state.stream = await navigator.mediaDevices.getUserMedia({
           audio: {
             channelCount: 1,
@@ -614,14 +647,14 @@
             sample_rate: 16000,
           }))
           state.recording = true
-          els.recordButton.textContent = '松开发送'
+          els.recordButton.textContent = 'Release to Send'
           els.recordButton.classList.add('recording')
           els.voiceWave.classList.add('active')
           await startPcmRecorder()
         } catch (err) {
           state.recording = false
           state.recorderStopping = false
-          els.recordButton.textContent = '按住录音'
+          els.recordButton.textContent = 'Hold to Talk'
           els.recordButton.classList.remove('recording')
           els.voiceWave.classList.remove('active')
           cleanupMicPipeline()
@@ -641,7 +674,7 @@
         if (!state.recording || state.recorderStopping) return
         state.recording = false
         state.recorderStopping = true
-        els.recordButton.textContent = '按住录音'
+        els.recordButton.textContent = 'Hold to Talk'
         els.recordButton.classList.remove('recording')
         els.voiceWave.classList.remove('active')
         cleanupMicPipeline()
@@ -653,7 +686,7 @@
             format: 'pcm_s16le',
             sample_rate: 16000,
           }))
-          setStatus('录音已发送，等待回复。')
+          setStatus('Recording sent. Waiting for the response.')
         }
       }
 
@@ -663,7 +696,7 @@
         if (!file) return
         try {
           await uploadAvatar(file)
-          setStatus('人物图片已加载。')
+          setStatus('Avatar image loaded.')
         } catch (err) {
           setStatus(err instanceof Error ? err.message : String(err))
         }
@@ -706,7 +739,7 @@
           els.avatarImage.src = state.avatarUrl
           els.modeValue.textContent = data.lite ? `Lite/${data.steps} step` : `${data.steps} step`
           if (!data.doubao_ready) {
-            setStatus('未检测到豆包凭证，请在 .env 中配置 DOUBAO_APP_ID 和 DOUBAO_ACCESS_TOKEN。')
+            setStatus('Doubao credentials were not detected. Configure DOUBAO_APP_ID and DOUBAO_ACCESS_TOKEN in .env.')
           }
         })
         .catch(() => {})
