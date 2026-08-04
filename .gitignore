@@ -1,5 +1,6 @@
 *.egg-info
 .vscode
+.env
 **/__pycache__/
 outputs/**
 *.tex
@@ -24,3 +25,4 @@ eval/eval-lipsync/weights/**
 eval/common_metrics_on_video_quality/*.log
 eval/common_metrics_on_video_quality/fvd/**/i3d*
 eval/common_metrics_on_video_quality/**/*.pb
+web/runtime/**

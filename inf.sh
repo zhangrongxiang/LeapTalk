@@ -22,7 +22,6 @@ ARGS=(
   --num_inference_steps "$NUM_INFERENCE_STEPS"
   --cond_image "$COND_IMAGE"
   --audio_path "$AUDIO_PATH"
-  --use_face_crop
 )
 
 if [[ -n "$AUDIO_PROJ" ]]; then

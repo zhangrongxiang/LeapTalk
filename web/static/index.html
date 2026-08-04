@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeapTalk Web</title>
+    <link rel="stylesheet" href="/static/app.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="stage-panel">
+        <header class="topbar">
+          <div>
+            <div class="eyebrow">LeapTalk Live</div>
+            <h1>数字人语音对话</h1>
+          </div>
+          <div class="connection" id="connectionState">
+            <span class="dot"></span>
+            <span>Disconnected</span>
+          </div>
+        </header>
+
+        <div class="video-shell">
+          <video id="avatarVideo" class="avatar-video" controls playsinline></video>
+          <img id="avatarImage" class="avatar-image" alt="Avatar preview" />
+          <div class="video-placeholder" id="videoPlaceholder">
+            <span>等待生成实时说话视频</span>
+          </div>
+          <div class="hud">
+            <div>
+              <span class="hud-label">FPS</span>
+              <strong id="fpsValue">--</strong>
+            </div>
+            <div>
+              <span class="hud-label">Latency</span>
+              <strong id="latencyValue">--</strong>
+            </div>
+            <div>
+              <span class="hud-label">Mode</span>
+              <strong id="modeValue">Lite</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <label class="file-button">
+            <input id="avatarInput" type="file" accept="image/*" />
+            <span>加载人物图片</span>
+          </label>
+          <button id="connectButton" class="pi-button primary">连接</button>
+          <button id="recordButton" class="pi-button" disabled>按住录音</button>
+          <div class="wave" id="voiceWave">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <div class="status-line" id="statusLine">填写 .env 后启动服务，连接即可开始。</div>
+      </section>
+
+      <aside class="chat-panel">
+        <header class="chat-header">
+          <div>
+            <div class="eyebrow">Conversation</div>
+            <h2>对话过程</h2>
+          </div>
+          <button id="clearButton" class="icon-button" title="清空对话">×</button>
+        </header>
+
+        <div id="messages" class="messages"></div>
+
+        <form id="chatForm" class="input-bar">
+          <textarea id="textInput" rows="2" placeholder="输入文字，或按住左侧录音按钮说话"></textarea>
+          <button id="sendButton" class="pi-button primary" type="submit" disabled>发送</button>
+        </form>
+      </aside>
+    </main>
+
+    <script>
+      const state = {
+        ws: null,
+        connected: false,
+        recording: false,
+        mediaRecorder: null,
+        stream: null,
+        audioContext: null,
+        micSource: null,
+        micProcessor: null,
+        avatarUrl: '/assets/photo.jpg',
+        assistantDraftId: null,
+        videoObjectUrl: null,
+        videoQueue: [],
+        videoPlaying: false,
+        mediaSource: null,
+        sourceBuffer: null,
+        mediaSourceUrl: null,
+        pendingSegments: [],
+        mseNextTimestamp: 0,
+        mseReady: false,
+        mseEnded: false,
+        mseFailed: false,
+        recorderStopping: false,
+        videoRevealToken: 0,
+      }
+
+      const els = {
+        connectionState: document.getElementById('connectionState'),
+        avatarVideo: document.getElementById('avatarVideo'),
+        avatarImage: document.getElementById('avatarImage'),
+        videoPlaceholder: document.getElementById('videoPlaceholder'),
+        fpsValue: document.getElementById('fpsValue'),
+        latencyValue: document.getElementById('latencyValue'),
+        modeValue: document.getElementById('modeValue'),
+        avatarInput: document.getElementById('avatarInput'),
+        connectButton: document.getElementById('connectButton'),
+        recordButton: document.getElementById('recordButton'),
+        voiceWave: document.getElementById('voiceWave'),
+        statusLine: document.getElementById('statusLine'),
+        messages: document.getElementById('messages'),
+        clearButton: document.getElementById('clearButton'),
+        chatForm: document.getElementById('chatForm'),
+        textInput: document.getElementById('textInput'),
+        sendButton: document.getElementById('sendButton'),
+      }
+
+      function setConnected(connected) {
+        state.connected = connected
+        els.connectionState.classList.toggle('online', connected)
+        els.connectionState.querySelector('span:last-child').textContent = connected ? 'Connected' : 'Disconnected'
+        els.connectButton.textContent = connected ? '断开' : '连接'
+        els.sendButton.disabled = !connected
+        els.recordButton.disabled = !connected
+      }
+
+      function setStatus(text) {
+        els.statusLine.textContent = text || ''
+      }
+
+      function scrollMessages() {
+        els.messages.scrollTop = els.messages.scrollHeight
+      }
+
+      function addMessage(role, text, extraClass = '') {
+        const node = document.createElement('div')
+        node.className = `message ${role} ${extraClass}`.trim()
+        const content = document.createElement('div')
+        content.className = 'message-content'
+        content.textContent = text
+        node.appendChild(content)
+        els.messages.appendChild(node)
+        scrollMessages()
+        return content
+      }
+
+      function startAssistantDraft() {
+        const id = crypto.randomUUID()
+        const content = addMessage('assistant', '')
+        state.assistantDraftId = id
+        content.dataset.draftId = id
+        return content
+      }
+
+      function getAssistantDraft() {
+        if (!state.assistantDraftId) return startAssistantDraft()
+        const node = els.messages.querySelector(`[data-draft-id="${state.assistantDraftId}"]`)
+        return node || startAssistantDraft()
+      }
+
+      function finishAssistantDraft(text) {
+        const node = getAssistantDraft()
+        if (text) node.textContent = text
+        delete node.dataset.draftId
+        state.assistantDraftId = null
+        scrollMessages()
+      }
+
+      function holdCurrentVisual() {
+        const video = els.avatarVideo
+        if (
+          video.style.display !== 'none' &&
+          video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA &&
+          video.videoWidth > 0 &&
+          video.videoHeight > 0
+        ) {
+          try {
+            const canvas = document.createElement('canvas')
+            canvas.width = video.videoWidth
+            canvas.height = video.videoHeight
+            const ctx = canvas.getContext('2d')
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+            els.avatarImage.src = canvas.toDataURL('image/jpeg', 0.92)
+            els.avatarImage.style.display = 'block'
+            els.videoPlaceholder.style.display = 'none'
+            return
+          } catch (_) {}
+        }
+
+        if (!els.avatarImage.getAttribute('src')) {
+          els.avatarImage.src = state.avatarUrl
+        }
+        els.avatarImage.style.display = 'block'
+        els.videoPlaceholder.style.display = 'none'
+      }
+
+      function resetVideoPlayback({ preserveFrame = true } = {}) {
+        if (preserveFrame) holdCurrentVisual()
+        state.videoRevealToken += 1
+        state.videoQueue = []
+        state.videoPlaying = false
+        state.pendingSegments = []
+        state.mseNextTimestamp = 0
+        state.mseReady = false
+        state.mseEnded = false
+        state.mseFailed = false
+        state.sourceBuffer = null
+        if (state.mediaSource && state.mediaSource.readyState === 'open') {
+          try {
+            state.mediaSource.endOfStream()
+          } catch (_) {}
+        }
+        state.mediaSource = null
+        els.avatarVideo.onended = null
+        els.avatarVideo.pause()
+        els.avatarVideo.removeAttribute('src')
+        els.avatarVideo.load()
+        if (state.videoObjectUrl) {
+          URL.revokeObjectURL(state.videoObjectUrl)
+          state.videoObjectUrl = null
+        }
+        if (state.mediaSourceUrl) {
+          URL.revokeObjectURL(state.mediaSourceUrl)
+          state.mediaSourceUrl = null
+        }
+      }
+
+      async function fetchVideoObjectUrl(url) {
+        const cacheBustedUrl = `${url}?t=${Date.now()}`
+        const response = await fetch(cacheBustedUrl, { cache: 'no-store' })
+        if (!response.ok) throw new Error(`视频加载失败：HTTP ${response.status}`)
+        const blob = await response.blob()
+        return URL.createObjectURL(blob)
+      }
+
+      function objectUrlFromVideoBytes(bytes) {
+        const blob = new Blob([bytes], { type: 'video/mp4' })
+        return URL.createObjectURL(blob)
+      }
+
+      async function decodeVideoChunkPacket(raw) {
+        const buffer = raw instanceof ArrayBuffer ? raw : await raw.arrayBuffer()
+        const view = new DataView(buffer)
+        if (buffer.byteLength < 8) throw new Error('视频 chunk 数据过短')
+        const magic = String.fromCharCode(
+          view.getUint8(0),
+          view.getUint8(1),
+          view.getUint8(2),
+          view.getUint8(3),
+        )
+        if (magic !== 'LTF4' && magic !== 'LTMP') throw new Error('未知二进制消息')
+        const metaLength = view.getUint32(4, false)
+        const metaStart = 8
+        const metaEnd = metaStart + metaLength
+        if (metaEnd > buffer.byteLength) throw new Error('视频 chunk 元信息不完整')
+        const metaBytes = new Uint8Array(buffer, metaStart, metaLength)
+        const meta = JSON.parse(new TextDecoder().decode(metaBytes))
+        const videoBytes = buffer.slice(metaEnd)
+        return { ...meta, transport: meta.transport || (magic === 'LTF4' ? 'websocket_fmp4' : 'websocket_mp4'), videoBytes }
+      }
+
+      function canUseMse(mimeType) {
+        return Boolean(
+          window.MediaSource &&
+          typeof MediaSource.isTypeSupported === 'function' &&
+          MediaSource.isTypeSupported(mimeType),
+        )
+      }
+
+      function showVideo() {
+        els.avatarVideo.style.display = 'block'
+        els.avatarImage.style.display = 'none'
+        els.videoPlaceholder.style.display = 'none'
+      }
+
+      function revealVideoWhenFrameReady() {
+        const video = els.avatarVideo
+        const token = ++state.videoRevealToken
+        video.style.display = 'block'
+        els.videoPlaceholder.style.display = 'none'
+
+        const reveal = () => {
+          if (token !== state.videoRevealToken) return
+          showVideo()
+        }
+
+        if ('requestVideoFrameCallback' in video) {
+          video.requestVideoFrameCallback(reveal)
+          return
+        }
+
+        if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+          reveal()
+          return
+        }
+
+        video.addEventListener('loadeddata', reveal, { once: true })
+        video.addEventListener('playing', reveal, { once: true })
+      }
+
+      function ensureMse(mimeType) {
+        if (state.sourceBuffer) return true
+        if (!canUseMse(mimeType)) {
+          state.mseFailed = true
+          return false
+        }
+
+        const mediaSource = new MediaSource()
+        state.mediaSource = mediaSource
+        state.mediaSourceUrl = URL.createObjectURL(mediaSource)
+        state.mseReady = false
+        state.mseEnded = false
+        els.avatarVideo.src = state.mediaSourceUrl
+        els.avatarVideo.style.display = 'block'
+        els.videoPlaceholder.style.display = 'none'
+
+        mediaSource.addEventListener('sourceopen', () => {
+          if (state.mediaSource !== mediaSource || state.sourceBuffer) return
+          try {
+            const sourceBuffer = mediaSource.addSourceBuffer(mimeType)
+            sourceBuffer.mode = 'segments'
+            sourceBuffer.addEventListener('updateend', appendPendingMseSegments)
+            sourceBuffer.addEventListener('error', () => {
+              state.mseFailed = true
+              setStatus('MSE 视频缓冲失败，已切换到兼容播放。')
+            })
+            state.sourceBuffer = sourceBuffer
+            state.mseReady = true
+            appendPendingMseSegments()
+          } catch (err) {
+            state.mseFailed = true
+            const msg = err instanceof Error ? err.message : String(err)
+            addMessage('system', `MSE 初始化失败：${msg}`)
+            setStatus('MSE 初始化失败，已切换到兼容播放。')
+          }
+        }, { once: true })
+        return true
+      }
+
+      function appendPendingMseSegments() {
+        const mediaSource = state.mediaSource
+        const sourceBuffer = state.sourceBuffer
+        if (!mediaSource || !sourceBuffer || mediaSource.readyState !== 'open' || sourceBuffer.updating) return
+        const segment = state.pendingSegments.shift()
+        if (!segment) {
+          if (state.mseEnded) {
+            try {
+              mediaSource.endOfStream()
+            } catch (_) {}
+          }
+          return
+        }
+        try {
+          sourceBuffer.timestampOffset = segment.timestampOffset
+          sourceBuffer.appendBuffer(segment.bytes)
+          els.avatarVideo.play().catch(() => {
+            setStatus('浏览器阻止自动播放，请点击视频继续。')
+          })
+          revealVideoWhenFrameReady()
+        } catch (err) {
+          state.mseFailed = true
+          const msg = err instanceof Error ? err.message : String(err)
+          addMessage('system', `MSE append 失败：${msg}`)
+          setStatus('MSE append 失败，已切换到兼容播放。')
+        }
+      }
+
+      function enqueueMseSegment(data) {
+        const mimeType = data.mime_type || 'video/mp4; codecs="avc1.64001e, mp4a.40.2"'
+        if (state.mseFailed || !data.videoBytes || !ensureMse(mimeType)) return false
+        const duration = Number(data.frames || 0) / Number(data.fps || 25)
+        state.pendingSegments.push({
+          bytes: data.videoBytes,
+          timestampOffset: state.mseNextTimestamp,
+        })
+        state.mseNextTimestamp += duration
+        appendPendingMseSegments()
+        return true
+      }
+
+      function finishMseStream() {
+        state.mseEnded = true
+        appendPendingMseSegments()
+      }
+
+      async function playNextVideoChunk() {
+        if (state.videoPlaying) return
+        const item = state.videoQueue.shift()
+        if (!item) return
+        state.videoPlaying = true
+        if (state.videoObjectUrl) {
+          URL.revokeObjectURL(state.videoObjectUrl)
+          state.videoObjectUrl = null
+        }
+        holdCurrentVisual()
+        try {
+          state.videoObjectUrl = item.videoBytes
+            ? objectUrlFromVideoBytes(item.videoBytes)
+            : await fetchVideoObjectUrl(item.url)
+          els.avatarVideo.src = state.videoObjectUrl
+        } catch (err) {
+          state.videoPlaying = false
+          const msg = err instanceof Error ? err.message : String(err)
+          addMessage('system', msg)
+          setStatus(msg)
+          playNextVideoChunk()
+          return
+        }
+        els.avatarVideo.style.display = 'block'
+        els.videoPlaceholder.style.display = 'none'
+        els.avatarVideo.onended = () => {
+          state.videoPlaying = false
+          playNextVideoChunk()
+        }
+        await els.avatarVideo.play().catch(() => {
+          setStatus('浏览器阻止自动播放，请点击视频继续。')
+        })
+        revealVideoWhenFrameReady()
+      }
+
+      function enqueueVideoChunk(data) {
+        if (data.transport === 'websocket_fmp4' && enqueueMseSegment(data)) return
+        state.videoQueue.push(data)
+        playNextVideoChunk()
+      }
+
+      function connect() {
+        if (state.ws) {
+          state.ws.close()
+          return
+        }
+        const proto = location.protocol === 'https:' ? 'wss' : 'ws'
+        const ws = new WebSocket(`${proto}://${location.host}/ws/chat`)
+        state.ws = ws
+        ws.binaryType = 'arraybuffer'
+        ws.onopen = () => {
+          setConnected(true)
+          ws.send(JSON.stringify({ type: 'init', avatar_url: state.avatarUrl }))
+          setStatus('已连接，可以开始对话。')
+        }
+        ws.onclose = () => {
+          state.ws = null
+          setConnected(false)
+          setStatus('连接已断开。')
+        }
+        ws.onerror = () => setStatus('WebSocket 连接错误。')
+        ws.onmessage = async (event) => {
+          if (typeof event.data !== 'string') {
+            try {
+              const chunk = await decodeVideoChunkPacket(event.data)
+              enqueueVideoChunk(chunk)
+              if (chunk.generation_fps) els.fpsValue.textContent = Number(chunk.generation_fps).toFixed(1)
+              els.latencyValue.textContent = `${Number(chunk.elapsed_seconds || 0).toFixed(1)}s`
+              setStatus(`收到 WebSocket 视频 chunk ${chunk.chunk_index}`)
+            } catch (err) {
+              const msg = err instanceof Error ? err.message : String(err)
+              addMessage('system', msg)
+              setStatus(msg)
+            }
+            return
+          }
+          const data = JSON.parse(event.data)
+          if (data.type === 'ready') {
+            setStatus(data.message)
+          } else if (data.type === 'status') {
+            setStatus(data.message)
+          } else if (data.type === 'user_transcript') {
+            addMessage('user', data.text)
+          } else if (data.type === 'assistant_delta') {
+            const draft = getAssistantDraft()
+            draft.textContent += data.text || ''
+            scrollMessages()
+          } else if (data.type === 'assistant_final') {
+            finishAssistantDraft(data.text || '')
+          } else if (data.type === 'video_generating') {
+            els.voiceWave.classList.remove('active')
+            setStatus(data.message)
+          } else if (data.type === 'video_stream_start') {
+            resetVideoPlayback()
+            els.voiceWave.classList.remove('active')
+            setStatus(data.message)
+          } else if (data.type === 'video_stream_ready') {
+            setStatus(`视频流准备完成：${data.frames_per_chunk} frames/chunk`)
+          } else if (data.type === 'fps_update') {
+            els.fpsValue.textContent = Number(data.fps).toFixed(1)
+          } else if (data.type === 'video_chunk') {
+            enqueueVideoChunk(data)
+            if (data.generation_fps) els.fpsValue.textContent = Number(data.generation_fps).toFixed(1)
+            els.latencyValue.textContent = `${Number(data.elapsed_seconds || 0).toFixed(1)}s`
+            setStatus(`收到视频 chunk ${data.chunk_index}`)
+          } else if (data.type === 'video_chunk_ready') {
+            if (data.generation_fps) els.fpsValue.textContent = Number(data.generation_fps).toFixed(1)
+            els.latencyValue.textContent = `${Number(data.elapsed_seconds || 0).toFixed(1)}s`
+          } else if (data.type === 'video_stream_end') {
+            finishMseStream()
+            setStatus(`视频流完成：${data.chunks} chunks`)
+          } else if (data.type === 'turn_complete') {
+            setStatus('Ready.')
+          } else if (data.type === 'error') {
+            addMessage('system', data.message || '发生错误')
+            setStatus(data.message || '发生错误')
+          }
+        }
+      }
+
+      async function uploadAvatar(file) {
+        const form = new FormData()
+        form.append('file', file)
+        const res = await fetch('/api/avatar', { method: 'POST', body: form })
+        if (!res.ok) throw new Error(await res.text())
+        const data = await res.json()
+        state.avatarUrl = data.url
+        els.avatarImage.src = data.url
+        els.avatarImage.style.display = 'block'
+        els.avatarVideo.style.display = 'none'
+        els.videoPlaceholder.style.display = 'none'
+        if (state.ws && state.ws.readyState === WebSocket.OPEN) {
+          state.ws.send(JSON.stringify({ type: 'init', avatar_url: state.avatarUrl }))
+        }
+      }
+
+      function floatToPcm16(samples) {
+        const output = new Int16Array(samples.length)
+        for (let i = 0; i < samples.length; i++) {
+          const value = Math.max(-1, Math.min(1, samples[i]))
+          output[i] = value < 0 ? value * 32768 : value * 32767
+        }
+        return output
+      }
+
+      function downsampleTo16k(input, sourceRate) {
+        const targetRate = 16000
+        if (sourceRate === targetRate) return input
+        const ratio = sourceRate / targetRate
+        const outputLength = Math.max(1, Math.floor(input.length / ratio))
+        const output = new Float32Array(outputLength)
+        for (let i = 0; i < outputLength; i++) {
+          const start = Math.floor(i * ratio)
+          const end = Math.min(input.length, Math.floor((i + 1) * ratio))
+          let sum = 0
+          let count = 0
+          for (let j = start; j < end; j++) {
+            sum += input[j]
+            count += 1
+          }
+          output[i] = count ? sum / count : input[Math.min(start, input.length - 1)]
+        }
+        return output
+      }
+
+      function cleanupMicPipeline() {
+        if (state.micProcessor) {
+          state.micProcessor.disconnect()
+          state.micProcessor.onaudioprocess = null
+          state.micProcessor = null
+        }
+        if (state.micSource) {
+          state.micSource.disconnect()
+          state.micSource = null
+        }
+        if (state.audioContext) {
+          state.audioContext.close().catch(() => {})
+          state.audioContext = null
+        }
+        if (state.stream) {
+          state.stream.getTracks().forEach(track => track.stop())
+          state.stream = null
+        }
+      }
+
+      async function startPcmRecorder() {
+        const AudioContextCtor = window.AudioContext || window.webkitAudioContext
+        if (!AudioContextCtor) throw new Error('当前浏览器不支持 AudioContext 录音。')
+        state.stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            channelCount: 1,
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+          },
+        })
+        const ctx = new AudioContextCtor()
+        state.audioContext = ctx
+        if (ctx.state === 'suspended') await ctx.resume()
+        const source = ctx.createMediaStreamSource(state.stream)
+        const processor = ctx.createScriptProcessor(4096, 1, 1)
+        processor.onaudioprocess = (event) => {
+          if (!state.recording || !state.ws || state.ws.readyState !== WebSocket.OPEN) return
+          const input = event.inputBuffer.getChannelData(0)
+          const pcm16 = floatToPcm16(downsampleTo16k(input, ctx.sampleRate))
+          if (pcm16.byteLength > 0) state.ws.send(pcm16.buffer)
+        }
+        source.connect(processor)
+        processor.connect(ctx.destination)
+        state.micSource = source
+        state.micProcessor = processor
+      }
+
+      async function startRecording() {
+        if (!state.connected || state.recording) return
+        resetVideoPlayback()
+        try {
+          state.ws.send(JSON.stringify({
+            type: 'audio_start',
+            avatar_url: state.avatarUrl,
+            format: 'pcm_s16le',
+            sample_rate: 16000,
+          }))
+          state.recording = true
+          els.recordButton.textContent = '松开发送'
+          els.recordButton.classList.add('recording')
+          els.voiceWave.classList.add('active')
+          await startPcmRecorder()
+        } catch (err) {
+          state.recording = false
+          state.recorderStopping = false
+          els.recordButton.textContent = '按住录音'
+          els.recordButton.classList.remove('recording')
+          els.voiceWave.classList.remove('active')
+          cleanupMicPipeline()
+          if (state.ws && state.ws.readyState === WebSocket.OPEN) {
+            state.ws.send(JSON.stringify({
+              type: 'audio_end',
+              avatar_url: state.avatarUrl,
+              format: 'pcm_s16le',
+              sample_rate: 16000,
+            }))
+          }
+          throw err
+        }
+      }
+
+      function stopRecording() {
+        if (!state.recording || state.recorderStopping) return
+        state.recording = false
+        state.recorderStopping = true
+        els.recordButton.textContent = '按住录音'
+        els.recordButton.classList.remove('recording')
+        els.voiceWave.classList.remove('active')
+        cleanupMicPipeline()
+        state.recorderStopping = false
+        if (state.ws && state.ws.readyState === WebSocket.OPEN) {
+          state.ws.send(JSON.stringify({
+            type: 'audio_end',
+            avatar_url: state.avatarUrl,
+            format: 'pcm_s16le',
+            sample_rate: 16000,
+          }))
+          setStatus('录音已发送，等待回复。')
+        }
+      }
+
+      els.connectButton.addEventListener('click', connect)
+      els.avatarInput.addEventListener('change', async () => {
+        const file = els.avatarInput.files && els.avatarInput.files[0]
+        if (!file) return
+        try {
+          await uploadAvatar(file)
+          setStatus('人物图片已加载。')
+        } catch (err) {
+          setStatus(err instanceof Error ? err.message : String(err))
+        }
+      })
+      els.chatForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const text = els.textInput.value.trim()
+        if (!text || !state.ws || state.ws.readyState !== WebSocket.OPEN) return
+        addMessage('user', text)
+        els.textInput.value = ''
+        resetVideoPlayback()
+        state.ws.send(JSON.stringify({ type: 'text', text, avatar_url: state.avatarUrl }))
+      })
+      els.clearButton.addEventListener('click', () => {
+        els.messages.innerHTML = ''
+      })
+      els.recordButton.addEventListener('pointerdown', (event) => {
+        event.preventDefault()
+        if (els.recordButton.setPointerCapture) {
+          els.recordButton.setPointerCapture(event.pointerId)
+        }
+        startRecording().catch(err => setStatus(err instanceof Error ? err.message : String(err)))
+      })
+      els.recordButton.addEventListener('pointerup', (event) => {
+        if (els.recordButton.releasePointerCapture) {
+          try {
+            els.recordButton.releasePointerCapture(event.pointerId)
+          } catch (_) {}
+        }
+        stopRecording()
+      })
+      els.recordButton.addEventListener('pointercancel', stopRecording)
+      window.addEventListener('pointerup', stopRecording)
+      window.addEventListener('pointercancel', stopRecording)
+
+      fetch('/api/config')
+        .then(res => res.json())
+        .then(data => {
+          state.avatarUrl = data.default_avatar_url || state.avatarUrl
+          els.avatarImage.src = state.avatarUrl
+          els.modeValue.textContent = data.lite ? `Lite/${data.steps} step` : `${data.steps} step`
+          if (!data.doubao_ready) {
+            setStatus('未检测到豆包凭证，请在 .env 中配置 DOUBAO_APP_ID 和 DOUBAO_ACCESS_TOKEN。')
+          }
+        })
+        .catch(() => {})
+    </script>
+  </body>
+</html>

@@ -3,15 +3,10 @@
 <br>
 
 <a href="https://zhangrongxiang.github.io/leaptalk-page/"><img src="https://img.shields.io/badge/Web-Project Page-1d72b8.svg" alt="Project Page"></a>
-<a href="https://arxiv.org/abs/2511.23199"><img src="https://img.shields.io/badge/arXiv-ViBT-A42C25.svg" alt="arXiv"></a>
+<a href="https://arxiv.org/abs/2608.00079"><img src="https://img.shields.io/badge/arXiv-ViBT-A42C25.svg" alt="arXiv"></a>
 <a href="https://huggingface.co/z-rx/leaptalk"><img src="https://img.shields.io/badge/🤗_HuggingFace-Model-ffbd45.svg" alt="HuggingFace Model"></a>
 
-> **ViBT: Vision Bridge Transformer at Scale**
-> <br>
-> [Rongxiang Zhang](https://zhangrongxiang.github.io)<sup>1,2</sup>, [Songhua Liu](https://huage001.github.io)<sup>1</sup>
-> <br>
-> 1.School of Artificial Intelligence, Shanghai Jiao Tong University; 2.Harbin Institute of Technology
-> <br>
+
 
 ## ⭐Highlights
 - **Real-time streaming**: Generate open-ended talking-head videos from a reference image and speech audio in a chunk-by-chunk streaming pipeline.
@@ -71,6 +66,33 @@ Then run:
 bash inf.sh
 ```
 
+## Web Demo
+The web demo provides a real-time digital human conversation experience: the left side shows the generated speaking video and runtime metrics, while the right side keeps the user input and dialogue history. Doubao realtime dialogue handles text/voice input, response generation, and TTS; LeapTalk renders the talking-head video from the selected portrait image and streamed dialogue audio.
+
+#### 1. Configure keys and model paths
+```bash
+cp .env.example .env
+```
+
+Fill the Doubao realtime dialogue credentials and the LeapTalk model paths in `.env`:
+```bash
+DOUBAO_APP_ID=YOUR_DOUBAO_APP_ID
+DOUBAO_ACCESS_TOKEN=YOUR_DOUBAO_ACCESS_TOKEN
+LEAPTALK_CKPT_DIR="./models/SoulX-FlashHead-1_3B"
+LEAPTALK_WAV2VEC_DIR="./models/wav2vec2-base-960h"
+LEAPTALK_LORA_DIR="./models/leaptalk"
+LEAPTALK_AUDIO_PROJ="./models/leaptalk/audio_proj_step_10400.pt"
+```
+
+`DOUBAO_API_KEY` is kept as an optional fallback, but the web demo prefers the `DOUBAO_APP_ID` / `DOUBAO_ACCESS_TOKEN` pair when both are present.
+
+#### 2. Start the web server
+```bash
+python web_server.py
+```
+
+Open `http://localhost:7860`, load a portrait image, connect, then use text input or hold the record button to talk with the digital human.
+
 ## 🔥Training
 #### 1. Prepare VividHead
 Download the training dataset from [Soul-AILab/VividHead](https://huggingface.co/datasets/Soul-AILab/VividHead):
@@ -100,4 +122,18 @@ SAVE_DIR="./outputs/train"
 #### 3. Run training
 ```bash
 bash train.sh
+```
+
+## Citation
+If you find this work useful, please consider citing:
+```bibtex
+@misc{zhang2026leaptalkbreakinglatencyqualitytradeoff,
+      title={LeapTalk: Breaking the Latency-Quality Trade-off in Talking Head Generation}, 
+      author={Rongxiang Zhang and Songhua Liu},
+      year={2026},
+      eprint={2608.00079},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2608.00079}, 
+}
 ```
