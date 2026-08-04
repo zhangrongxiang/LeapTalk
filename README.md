@@ -1,5 +1,5 @@
 # LeapTalk: Breaking the Latency–Quality Trade-off in Talking Head Generation 🎥✨
-<img src="./assets/teaser.JPG" width="100%" />
+<img src="./assets/teaser.svg" width="100%" />
 <br>
 
 <a href="https://zhangrongxiang.github.io/leaptalk-page/"><img src="https://img.shields.io/badge/Web-Project Page-1d72b8.svg" alt="Project Page"></a>
@@ -23,7 +23,7 @@ conda activate leaptalk
 
 #### 2. Install PyTorch
 ```bash
-pip install torch==2.7.1 torchvision==0.22.1 
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1
 ```
 
 #### 3. Install other dependencies

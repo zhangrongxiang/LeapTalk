@@ -346,7 +346,7 @@ class AudioVideoSequenceDataset(Dataset):
         }
 
 
-class FlashHeadARBridgeKDTrainer:
+class FlashHeadARBridgeTrainer:
     def __init__(
         self,
         ckpt_dir: str,
@@ -359,8 +359,6 @@ class FlashHeadARBridgeKDTrainer:
         student_steps: int = 4,
         teacher_steps: int = 4,
         bridge_loss_weight: float = 1.0,
-        gt_loss_weight: float = 0.0,
-        kd_loss_weight: float = 0.0,
         rollout_chunks: int = 2,
         resume_lora_dir: str | None = None,
         resume_audio_proj: str | None = None,
@@ -401,8 +399,6 @@ class FlashHeadARBridgeKDTrainer:
         self.writer: SummaryWriter | None = None
 
         self.bridge_loss_weight = bridge_loss_weight
-        self.gt_loss_weight = gt_loss_weight
-        self.kd_loss_weight = kd_loss_weight
         self.rollout_chunks = rollout_chunks
         self.student_steps = student_steps
         self.teacher_steps = teacher_steps
@@ -1137,8 +1133,7 @@ class FlashHeadARBridgeKDTrainer:
             zero = gt_chunk.new_zeros(())
             return {
                 "bridge_loss": zero,
-                "gt_loss": zero,
-                "kd_loss": zero,
+                "lpips_loss": zero,
                 "student_chunk": gt_chunk.detach(),
                 "teacher_chunk": None,
                 "bridge_timestep": zero,
@@ -1166,38 +1161,14 @@ class FlashHeadARBridgeKDTrainer:
         endpoint_error = (student_x0_suffix.float() - target_suffix.float()).square()
         spatial_weight = self._build_spatial_loss_weight(endpoint_error, 1.0 - tau, face_mask, lip_mask)
         bridge_weight = endpoint_weight if spatial_weight is None else endpoint_weight * spatial_weight.float()
-        bridge_loss = (spatial_weight * endpoint_error).mean()
-        gt_loss = F.l1_loss(student_x0_suffix.float(), target_suffix.float(), reduction="mean")
+        bridge_loss = (bridge_weight * endpoint_error).mean()
         lpips_loss = self._compute_lpips_loss(student_x0_suffix, target_suffix)
-
-        kd_loss = gt_chunk.new_zeros(())
-        teacher_chunk = None
-        if self.kd_loss_weight > 0:
-            self._move_teacher_to_device(self.device)
-            try:
-                with torch.no_grad():
-                    teacher_v = self._teacher_flow_with_audio_cfg(
-                        x=x_tau.detach(),
-                        timestep=timestep.detach(),
-                        audio_chunk=audio_chunk,
-                        ref_latent=ref_latent,
-                    )
-                teacher_v_suffix = teacher_v[:, :, prefix_len:, :, :]
-                teacher_x0_suffix = suffix_tau -  teacher_v_suffix
-                kd_error = (student_x0_suffix.float() - teacher_x0_suffix.float().detach()).square()
-                kd_loss = (endpoint_weight * kd_error).mean()
-                teacher_chunk = torch.cat([history, teacher_x0_suffix], dim=2)
-            finally:
-                pass
-                # self._move_teacher_to_device("cpu")
 
         return {
             "bridge_loss": bridge_loss,
-            "gt_loss": gt_loss,
-            "kd_loss": kd_loss,
             "lpips_loss": lpips_loss,
             "student_chunk": student_chunk,
-            "teacher_chunk": teacher_chunk,
+            "teacher_chunk": None,
             "bridge_timestep": timestep.detach().mean(),
         }
 
@@ -1256,8 +1227,6 @@ class FlashHeadARBridgeKDTrainer:
                 zero = history.new_zeros(())
                 return {
                     "bridge_loss": zero,
-                    "gt_loss": zero,
-                    "kd_loss": zero,
                     "lpips_loss": zero,
                     "student_chunk": teacher_chunk.detach(),
                     "teacher_chunk": teacher_chunk.detach(),
@@ -1288,14 +1257,10 @@ class FlashHeadARBridgeKDTrainer:
             spatial_weight = self._build_spatial_loss_weight(endpoint_error, 1.0 - tau, face_mask, lip_mask)
             bridge_weight = endpoint_weight if spatial_weight is None else endpoint_weight * spatial_weight.float()
             bridge_loss = (bridge_weight * endpoint_error).mean()
-            endpoint_loss = history.new_zeros(())
-            kd_loss = history.new_zeros(())
             lpips_loss = self._compute_lpips_loss(student_x0_suffix, teacher_suffix)
 
             return {
                 "bridge_loss": bridge_loss,
-                "gt_loss": endpoint_loss,
-                "kd_loss": kd_loss,
                 "lpips_loss": lpips_loss,
                 "student_chunk": student_chunk,
                 "teacher_chunk": teacher_chunk.detach(),
@@ -1393,8 +1358,6 @@ class FlashHeadARBridgeKDTrainer:
         specs = specs[start_idx:start_idx + rollout_len]
 
         total_bridge = video_latent.new_zeros(())
-        total_gt = video_latent.new_zeros(())
-        total_kd = video_latent.new_zeros(())
         total_lpips = video_latent.new_zeros(())
 
         current_history = None
@@ -1418,8 +1381,6 @@ class FlashHeadARBridgeKDTrainer:
                 lip_mask_chunk,
             )
             total_bridge = total_bridge + chunk_loss_dict["bridge_loss"]
-            total_gt = total_gt + chunk_loss_dict["gt_loss"]
-            total_kd = total_kd + chunk_loss_dict["kd_loss"]
             total_lpips = total_lpips + chunk_loss_dict["lpips_loss"]
 
             if "bridge_timestep" in chunk_loss_dict and chunk_loss_dict["bridge_timestep"] is not None:
@@ -1436,15 +1397,11 @@ class FlashHeadARBridgeKDTrainer:
         denom = float(len(specs))
         loss = (
             self.bridge_loss_weight * (total_bridge / denom)
-            + self.gt_loss_weight * (total_gt / denom)
-            + self.kd_loss_weight * (total_kd / denom)
             + self.lpips_loss_weight * (total_lpips / denom)
         )
         return {
             "loss": loss,
             "bridge_loss": total_bridge / denom,
-            "gt_loss": total_gt / denom,
-            "kd_loss": total_kd / max(1.0, denom),
             "lpips_loss": total_lpips / denom,
             "last_student_chunk": last_student_chunk,
             "last_audio_chunk": last_audio_chunk,
@@ -1622,8 +1579,6 @@ class FlashHeadARBridgeKDTrainer:
                         "loss": f"{loss_item:.4f}",
                         "bridge": f"{float(loss_dict['bridge_loss'].detach().item()):.4f}",
                         "br_t": ("-" if bridge_timestep_item is None else f"{bridge_timestep_item:.1f}"),
-                        "gt": f"{float(loss_dict['gt_loss'].detach().item()):.4f}",
-                        "kd": f"{float(loss_dict['kd_loss'].detach().item()):.4f}",
                         "lpips": f"{float(loss_dict['lpips_loss'].detach().item()):.4f}",
                         "dmd": f"{float(dmd_loss.detach().item()):.4f}",
                         "dmd_t": ("-" if dmd_timestep_item is None else f"{dmd_timestep_item:.1f}"),
@@ -1636,8 +1591,6 @@ class FlashHeadARBridgeKDTrainer:
                     if self.writer is not None:
                         self.writer.add_scalar("train/loss", loss_item, global_step)
                         self.writer.add_scalar("train/bridge_loss", float(loss_dict["bridge_loss"].detach().item()), global_step)
-                        self.writer.add_scalar("train/gt_loss", float(loss_dict["gt_loss"].detach().item()), global_step)
-                        self.writer.add_scalar("train/kd_loss", float(loss_dict["kd_loss"].detach().item()), global_step)
                         self.writer.add_scalar("train/lpips_loss", float(loss_dict["lpips_loss"].detach().item()), global_step)
                         self.writer.add_scalar("train/dmd_loss", float(dmd_loss.detach().item()), global_step)
                         self.writer.add_scalar("train/dmd_gradient_norm", float(dmd_log_dict["dmdtrain_gradient_norm"].detach().item()), global_step)
@@ -1697,8 +1650,6 @@ def _parse_args():
     parser.add_argument("--teacher_steps", type=int, default=4)
     parser.add_argument("--rollout_chunks", type=int, default=2)
     parser.add_argument("--bridge_loss_weight", type=float, default=1.0)
-    parser.add_argument("--gt_loss_weight", type=float, default=0.0)
-    parser.add_argument("--kd_loss_weight", type=float, default=0.0)
     parser.add_argument("--bridge_noise_scale", type=float, default=1.0)
     parser.add_argument(
         "--use_bridge_step_list",
@@ -1803,7 +1754,7 @@ if __name__ == "__main__":
         print(f"[INFO] Resuming LoRA from: {args.resume_lora_dir}")
         print(f"[INFO] Start global_step: {start_step}")
 
-    trainer = FlashHeadARBridgeKDTrainer(
+    trainer = FlashHeadARBridgeTrainer(
         ckpt_dir=args.ckpt_dir,
         wav2vec_dir=args.wav2vec_dir,
         video_dir=args.video_dir,
@@ -1814,8 +1765,6 @@ if __name__ == "__main__":
         student_steps=args.student_steps,
         teacher_steps=args.teacher_steps,
         bridge_loss_weight=args.bridge_loss_weight,
-        gt_loss_weight=args.gt_loss_weight,
-        kd_loss_weight=args.kd_loss_weight,
         rollout_chunks=args.rollout_chunks,
         resume_lora_dir=args.resume_lora_dir,
         resume_audio_proj=args.resume_audio_proj,
