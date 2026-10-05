@@ -125,6 +125,10 @@ SAVE_DIR="./outputs/train"
 bash train.sh
 ```
 
+## Community / Integrations
+
+- [ComfyUI-LeapTalk](https://github.com/hiroki-abe-58/ComfyUI-LeapTalk) by [@hiroki-abe-58](https://github.com/hiroki-abe-58): An unofficial ComfyUI integration for generating talking-head videos from a portrait and speech audio. See the integration repository for setup instructions, demos, and limitations.
+
 ## Citation
 If you find this work useful, please consider citing:
 ```bibtex
