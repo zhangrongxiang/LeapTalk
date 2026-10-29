@@ -32,7 +32,7 @@ from peft import LoraConfig, PeftModel, get_peft_model
 import flash_head.src.pipeline.flash_head_pipeline as flash_head_pipeline_module
 from flash_head.src.modules.flash_head_model import WanModelAudioProject
 from flash_head.src.pipeline.flash_head_pipeline import FlashHeadPipeline, timestep_transform
-from train.spatial_mask_utils import FaceLipMaskExtractor, MEDIAPIPE_AVAILABLE
+from spatial_mask_utils import FaceLipMaskExtractor, MEDIAPIPE_AVAILABLE
 from vibt.scheduler import ViBTScheduler
 
 
