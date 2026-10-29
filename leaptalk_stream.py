@@ -361,9 +361,9 @@ class LeapTalkEngine:
             if use_cuda_timing:
                 torch.cuda.synchronize()
             chunk_seconds = time.perf_counter() - started
-            if video_thwc.dtype == torch.bfloat16:
-                video_thwc = video_thwc.to(torch.float16)
-            frames = video_thwc.detach().cpu().numpy().astype(np.uint8)
+            # Cast to uint8 on the GPU before the copy: copying float frames to the
+            # host and converting them there stalled the stream intermittently (#7).
+            frames = video_thwc.detach().to(torch.uint8).cpu().numpy()
 
         out_dir = Path(turn_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
